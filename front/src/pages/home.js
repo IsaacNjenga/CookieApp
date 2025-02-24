@@ -37,7 +37,7 @@ function Home() {
         <h2 className="section-title">Best Sellers</h2>
         <Row gutter={[10, 10]} justify="center">
           {bestSellers.map((item, index) => (
-            <Col key={index} xs={12} sm={12} md={8} lg={6}>
+            <Col key={index} xs={24} sm={12} md={8} lg={6}>
               <Card
                 hoverable
                 cover={
@@ -47,13 +47,18 @@ function Home() {
                     style={{
                       objectFit: "cover",
                       width: "100%",
-                      height: "250px",
+                      height: "300px",
                     }}
+                    className="card-image"
                   />
                 }
                 className="cookie-card"
               >
-                <Rate allowHalf defaultValue={item.rating} />
+                <Rate
+                  allowHalf
+                  defaultValue={item.rating}
+                  style={{ width: "100%" }}
+                />
                 <Card.Meta
                   title={item.title}
                   description={`KES. ${item.price}`}
@@ -135,6 +140,8 @@ function Home() {
             font-size: 24px;
           }
           @media (max-width: 768px) {
+
+
             .carousel-text {
               font-size: 18px;
             }
@@ -143,7 +150,7 @@ function Home() {
               text-align: center;
             }
             .cookie-card {
-              text-align: center;
+              text-align: left;
             }
           }
         `}

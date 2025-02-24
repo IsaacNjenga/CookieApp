@@ -55,18 +55,18 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
       open={openModal}
       onCancel={() => setOpenModal(false)}
       confirmLoading={loading}
-      width={950}
+      width={850}
       style={{ maxWidth: "95vw" }} // Ensure modal is not too wide on small screens
     >
       {modalContent && (
-        <Row gutter={[24, 24]} align="middle">
+        <Row gutter={[20, 20]} align="middle">
           <Col xs={24} sm={24} md={10} lg={10} style={{ textAlign: "center" }}>
             <Image
               src={modalContent.img}
               alt={modalContent.title}
               width="100%"
               style={{
-                maxWidth: "350px",
+                maxWidth: "300px",
                 borderRadius: "10px",
                 boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
                 objectFit: "contain",
