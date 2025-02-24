@@ -58,6 +58,7 @@ function Home() {
                   title={item.title}
                   description={`KES. ${item.price}`}
                 />
+                <br />
                 <Button type="primary" block onClick={() => viewCookie(item)}>
                   Add To Cart
                 </Button>
