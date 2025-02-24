@@ -35,11 +35,10 @@ function Home() {
 
         {/* Best Sellers */}
         <h2 className="section-title">Best Sellers</h2>
-        <Row gutter={[50, 15]} justify="center">
+        <Row gutter={[10, 10]} justify="center">
           {bestSellers.map((item, index) => (
             <Col key={index} xs={12} sm={12} md={8} lg={6}>
               <Card
-                style={{ width: "125%" }}
                 hoverable
                 cover={
                   <Image
