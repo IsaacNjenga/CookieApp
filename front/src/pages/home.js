@@ -19,7 +19,7 @@ function Home() {
 
   return (
     <>
-      <div style={{ padding: "10px 10px" }}>
+      <div style={{ alignItems: "center" }}>
         {/* Hero Section */}
         <Carousel autoplay>
           <div>
@@ -35,12 +35,23 @@ function Home() {
 
         {/* Best Sellers */}
         <h2 className="section-title">Best Sellers</h2>
-        <Row gutter={[10, 10]} justify="center">
+        <Row gutter={[50, 15]} justify="center">
           {bestSellers.map((item, index) => (
-            <Col key={index} xs={13} sm={12} md={8} lg={6}>
+            <Col key={index} xs={12} sm={12} md={8} lg={6}>
               <Card
+                style={{ width: "125%" }}
                 hoverable
-                cover={<Image alt={item.title} src={item.img} />}
+                cover={
+                  <Image
+                    alt={item.title}
+                    src={item.img}
+                    style={{
+                      objectFit: "cover",
+                      width: "100%",
+                      height: "250px",
+                    }}
+                  />
+                }
                 className="cookie-card"
               >
                 <Rate allowHalf defaultValue={item.rating} />

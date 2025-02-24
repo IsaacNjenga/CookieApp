@@ -96,7 +96,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
               value={quantity}
               suffix={`${quantity > 1 ? "batches" : "batch"}`}
               onChange={(value) => setQuantity(value)}
-              style={{ width: "30%", marginTop: 8 }}
+              style={{ width: "50%", marginTop: 8 }}
             />
 
             <Button
