@@ -37,7 +37,7 @@ function Home() {
         <h2 className="section-title">Best Sellers</h2>
         <Row gutter={[10, 10]} justify="center">
           {bestSellers.map((item, index) => (
-            <Col key={index} xs={12} sm={12} md={8} lg={6}>
+            <Col key={index} xs={13} sm={12} md={8} lg={6}>
               <Card
                 hoverable
                 cover={<Image alt={item.title} src={item.img} />}
@@ -62,7 +62,7 @@ function Home() {
         <h2 className="section-title">New & Upcoming</h2>
         <Row gutter={[10, 10]} justify="center">
           {newCookies.map((item, index) => (
-            <Col key={index} xs={12} sm={12} md={8} lg={6}>
+            <Col key={index} xs={13} sm={12} md={8} lg={6}>
               <Card
                 hoverable
                 cover={<Image alt={item.title} src={item.img} />}
@@ -89,7 +89,7 @@ function Home() {
         <h2 className="section-title">Hot & Fresh</h2>
         <Row gutter={[10, 10]} justify="center">
           {hotCookies.map((item, index) => (
-            <Col key={index} xs={12} sm={12} md={8} lg={6}>
+            <Col key={index} xs={13} sm={12} md={8} lg={6}>
               <Card
                 hoverable
                 cover={<Image alt={item.title} src={item.img} />}
