@@ -11,7 +11,7 @@ export const bestSellers = [
   },
   {
     title: "Oatmeal Raisin",
-    img: "https://images.pexels.com/photos/8963422/pexels-photo-8963422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "400",
     rating: 3.5,
     category: "Healthy Choice",
@@ -21,7 +21,7 @@ export const bestSellers = [
   },
   {
     title: "Macadamia Nut",
-    img: "https://images.pexels.com/photos/30846571/pexels-photo-30846571/free-photo-of-artisanal-chocolate-chip-cookies-on-baking-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
     rating: 4.9,
     category: "Luxury",
@@ -31,7 +31,7 @@ export const bestSellers = [
   },
   {
     title: "Matcha Green Tea",
-    img: "https://images.pexels.com/photos/8963422/pexels-photo-8963422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
     rating: 3.8,
     category: "Exotic Flavors",
@@ -63,7 +63,7 @@ export const newCookies = [
   },
   {
     title: "Snickerdoodle",
-    img: "https://images.pexels.com/photos/30846571/pexels-photo-30846571/free-photo-of-artisanal-chocolate-chip-cookies-on-baking-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
@@ -73,7 +73,7 @@ export const newCookies = [
   },
   {
     title: "Macadamia Nut",
-    img: "https://images.pexels.com/photos/30846571/pexels-photo-30846571/free-photo-of-artisanal-chocolate-chip-cookies-on-baking-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
     rating: 4.9,
     category: "Luxury",
@@ -86,7 +86,7 @@ export const newCookies = [
 export const hotCookies = [
   {
     title: "Snickerdoodle",
-    img: "https://images.pexels.com/photos/30846571/pexels-photo-30846571/free-photo-of-artisanal-chocolate-chip-cookies-on-baking-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
@@ -96,7 +96,7 @@ export const hotCookies = [
   },
   {
     title: "Matcha Green Tea",
-    img: "https://images.pexels.com/photos/8963422/pexels-photo-8963422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
     rating: 4.8,
     category: "Exotic Flavors",
@@ -106,7 +106,7 @@ export const hotCookies = [
   },
   {
     title: "Snickerdoodle",
-    img: "https://images.pexels.com/photos/30846571/pexels-photo-30846571/free-photo-of-artisanal-chocolate-chip-cookies-on-baking-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
@@ -116,7 +116,7 @@ export const hotCookies = [
   },
   {
     title: "Matcha Green Tea",
-    img: "https://images.pexels.com/photos/8963422/pexels-photo-8963422.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
     rating: 4.8,
     category: "Exotic Flavors",
