@@ -77,10 +77,10 @@ function Home() {
                 className="section-image"
               />
               <div className="section-text">
-                <h1 style={{ color: "#f43636", fontSize: "1.5rem" }}>
+                <h1 style={{ color: "#f43636", fontSize: "1.8rem" }}>
                   {item.title}
                 </h1>
-                <h2 style={{ color: "#92544f", fontSize: "1.2rem" }}>
+                <h2 style={{ color: "#92544f", fontSize: "1.5rem" }}>
                   {item.text}
                 </h2>
               </div>

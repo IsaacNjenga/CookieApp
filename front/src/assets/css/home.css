@@ -44,12 +44,12 @@
   .home-divider {
     letter-spacing: 0px;
     text-align: center;
-    text-transform: uppercase;
+    text-transform: none;
     margin: 0;
   }
 
   .home-divider h2 {
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 600;
   }
 }
@@ -131,7 +131,7 @@
 /* Responsive feedback card width */
 @media (max-width: 768px) {
   .feedback-card {
-    width: 90%;
+    width: 100%;
   }
 }
 

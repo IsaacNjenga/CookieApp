@@ -11,6 +11,7 @@ import {
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import cookie_logo from "../assets/icons/cookie.png";
+import FooterContent from "./footer";
 
 const { Header, Content, Footer } = Layout;
 
@@ -113,7 +114,7 @@ function Navbar() {
         title="Menu"
         placement="right"
         onClose={toggleDrawer}
-        visible={drawerVisible}
+        open={drawerVisible}
       >
         <Menu mode="vertical" selectedKeys={[current]} onClick={handleClick}>
           {navItems.map((item) => (
@@ -132,8 +133,10 @@ function Navbar() {
       </Content>
 
       {/* Footer */}
-      <Footer style={{ textAlign: "center" }}>
-        ©{new Date().getFullYear()} Created by Njenga
+      <Footer
+        style={{ padding: "0px 0px", margin: "0px 0px", background: "black" }}
+      >
+        <FooterContent />
       </Footer>
     </Layout>
   );
