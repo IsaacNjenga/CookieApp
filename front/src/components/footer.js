@@ -1,14 +1,11 @@
 import {
   FacebookFilled,
-  FacebookOutlined,
   HeartFilled,
-  HeartOutlined,
   InstagramOutlined,
   MailOutlined,
   PhoneOutlined,
   TikTokOutlined,
   YoutubeFilled,
-  YoutubeOutlined,
 } from "@ant-design/icons";
 import { Divider } from "antd";
 import React from "react";
@@ -72,7 +69,8 @@ function FooterContent() {
         </div>
 
         <div
-          style={{ width: "1px", background: "#e39871", height: "60px" }}
+          className="border-div"
+          style={{ width: "1px", background: "white", height: "60px" }}
         ></div>
 
         {/* Contact Information */}
@@ -102,7 +100,7 @@ function FooterContent() {
       </div>
 
       <Divider
-        style={{ borderColor: "#e39871", width: "60%", margin: "20px auto" }}
+        style={{ borderColor: "white", width: "60%", margin: "20px auto" }}
       />
 
       {/* Footer Bottom */}
@@ -119,6 +117,12 @@ function FooterContent() {
         </p>
         <p>©{new Date().getFullYear()} Created by Njenga</p>
       </div>
+      <style>
+        {`
+        @media (max-width: 768px){
+            .border-div{display:none}
+        }`}
+      </style>
     </div>
   );
 }
