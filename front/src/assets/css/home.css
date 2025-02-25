@@ -1,7 +1,7 @@
 /* Carousel styles */
 .carousel {
   text-align: center;
-  font-size: 34px;
+  font-size: 32px;
   font-weight: bold;
   padding: 20px;
   border-radius: 15px;
@@ -175,6 +175,13 @@
   color: white;
 }
 
+.home-ribbon {
+  display: block;
+  font-size: 2rem;
+  padding: 20px 25px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
 .shop-button {
   margin-left: 0px;
   background-color: #e09b69 !important;
@@ -194,5 +201,10 @@
 
   .shop-button {
     font-size: 1.2rem;
+  }
+
+  .home-ribbon {
+    font-size: 1.5rem;
+    padding: 10px 16px;
   }
 }

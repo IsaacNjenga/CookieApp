@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Divider, Rate } from "antd";
+import { Badge, Button, Card, Divider, Rate } from "antd";
 import { feedback, image, content } from "../assets/data/data";
 import "../assets/css/home.css";
 import { ShopOutlined } from "@ant-design/icons";
@@ -8,17 +8,24 @@ import { Link } from "react-router-dom";
 function Home() {
   return (
     <>
-      <div className="home-banner-container">
-        <div className="home-banner-content">
-          <h1>Craving Something Sweet?</h1>
-          <h2>Treat Yourself — Experience Bliss</h2>
-          <Button className="shop-button">
-            <Link to="/shop">
-              <ShopOutlined /> To Shop
-            </Link>
-          </Button>
+      <Badge.Ribbon
+        text="Freshness Guaranteed"
+        color="#f8393b"
+        className="home-ribbon"
+        style={{ right: "10px" }}
+      >
+        <div className="home-banner-container">
+          <div className="home-banner-content">
+            <h1>Craving Something Sweet?</h1>
+            <h2>Treat Yourself — Experience Bliss</h2>
+            <Button className="shop-button">
+              <Link to="/shop">
+                <ShopOutlined /> To Shop
+              </Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </Badge.Ribbon>
 
       {/* Image and Text Sections */}
       <div className="content-container">
