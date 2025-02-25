@@ -4,8 +4,8 @@ import { UserContext } from "../App";
 
 const { Title, Text } = Typography;
 
-function Cart({ closeDrawer }) {
-  const { cartItems, setCartItems } = useContext(UserContext);
+function Cart() {
+  const { cartItems, setCartItems, closeDrawer } = useContext(UserContext);
 
   const removeFromCart = (item) => {
     setCartItems((prevCartItems) =>
@@ -45,7 +45,7 @@ function Cart({ closeDrawer }) {
             dataSource={cartItems}
             renderItem={(item) => (
               <List.Item
-                style={{ flexWrap: "wrap" }} // Allow wrapping on small screens
+                style={{ flexWrap: "wrap" }}
                 actions={[
                   <InputNumber
                     min={1}

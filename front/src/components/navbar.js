@@ -21,10 +21,9 @@ function Navbar() {
   const location = useLocation();
   const [current, setCurrent] = useState(location.pathname);
   const [drawerVisible, setDrawerVisible] = useState(false);
-  const [openDrawer, setOpenDrawer] = useState(false);
-  const { cartItems } = useContext(UserContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  console.log(cartItems);
+  const { cartItems, showDrawer, closeDrawer, openDrawer, setOpenDrawer } =
+    useContext(UserContext);
 
   const navItems = [
     { label: "Home", icon: HomeOutlined, path: "/" },
@@ -39,14 +38,6 @@ function Navbar() {
 
   const toggleDrawer = () => setDrawerVisible(!drawerVisible);
 
-  const showDrawer = () => {
-    setOpenDrawer(true);
-  };
-
-  const closeDrawer = () => {
-    setOpenDrawer(false);
-  };
-
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
@@ -56,14 +47,13 @@ function Navbar() {
   return (
     <>
       <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
-        {isMobile ? (
-          <FloatButton
-            icon={<ShoppingCartOutlined />}
-            title="View Your Cart"
-            type={cartItems.length > 0 ? "primary" : ""}
-            onClick={showDrawer}
-          />
-        ) : null}
+        <FloatButton
+          icon={<ShoppingCartOutlined />}
+          title="View Your Cart"
+          type={cartItems.length > 0 ? "primary" : ""}
+          onClick={showDrawer}
+          style={{ display: isMobile ? "block" : "none" }}
+        />
         <FloatButton.BackTop title="Back to top" />
       </FloatButton.Group>
       <Layout style={{ minHeight: "100vh" }}>

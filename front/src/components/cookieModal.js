@@ -20,25 +20,20 @@ const { Title, Text } = Typography;
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems } = useContext(UserContext);
-
-  const showDrawer = () => {
-    setOpenDrawer(true);
-  };
-
-  const closeDrawer = () => {
-    setOpenDrawer(false);
-  };
+  const { cartItems, setCartItems, showDrawer, closeDrawer } =
+    useContext(UserContext);
 
   const handleAddToCart = () => {
     if (quantity > 0) {
       setCartItems((prevCartItems) => {
         // Check if the item already exists in the cart
-        const existingItem = prevCartItems.find(item => item.id === modalContent.id);
-  
+        const existingItem = prevCartItems.find(
+          (item) => item.id === modalContent.id
+        );
+
         if (existingItem) {
           // If it exists, update the quantity
-          return prevCartItems.map(item =>
+          return prevCartItems.map((item) =>
             item.id === modalContent.id
               ? { ...item, quantity: item.quantity + quantity } // Add new quantity
               : item
@@ -48,11 +43,10 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
           return [...prevCartItems, { ...modalContent, quantity }];
         }
       });
-  
+
       showDrawer();
     }
   };
-  
 
   return (
     <Modal
@@ -130,7 +124,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
                 </Space>
               }
             >
-              <Cart closeDrawer={closeDrawer}/>
+              <Cart />
             </Drawer>
           </Col>
         </Row>

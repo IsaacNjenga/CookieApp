@@ -11,10 +11,16 @@ import Navbar from "./components/navbar.js";
 export const UserContext = createContext();
 function App() {
   const [cartItems, setCartItems] = useState([]);
+  const [openDrawer, setOpenDrawer] = useState(false);
+
+  const showDrawer = () => setOpenDrawer(true);
+  const closeDrawer = () => setOpenDrawer(false);
 
   return (
     <>
-      <UserContext.Provider value={{ cartItems, setCartItems }}>
+      <UserContext.Provider
+        value={{ cartItems, setCartItems, openDrawer, showDrawer, closeDrawer }}
+      >
         <BrowserRouter>
           <Routes>
             {/* Navbar wraps all pages */}
