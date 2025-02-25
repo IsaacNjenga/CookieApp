@@ -55,7 +55,17 @@ function Navbar() {
 
   return (
     <>
-      <FloatButton.BackTop title="Back to top" />
+      <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
+        {isMobile ? (
+          <FloatButton
+            icon={<ShoppingCartOutlined />}
+            title="View Your Cart"
+            type={cartItems.length > 0 ? "primary" : ""}
+            onClick={showDrawer}
+          />
+        ) : null}
+        <FloatButton.BackTop title="Back to top" />
+      </FloatButton.Group>
       <Layout style={{ minHeight: "100vh" }}>
         <Header
           style={{
