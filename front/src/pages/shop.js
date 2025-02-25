@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Card, Button, Row, Col, Image, Divider, Rate, Input } from "antd";
+import {
+  Card,
+  Button,
+  Row,
+  Col,
+  Image,
+  Divider,
+  Rate,
+  Input,
+  Carousel,
+} from "antd";
 import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
 import CookieModal from "../components/cookieModal.js";
 
@@ -20,13 +30,24 @@ function Shop() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
+    <div>
       <h2>Shop Our Cookies</h2>
 
       <Search
         placeholder="Find your favourite..."
         style={{ marginBottom: 20, width: 300 }}
       />
+      <Carousel autoplay className="carousel" dots={false} effect="fade">
+        <div className="carousel-slide">
+          Step into Uncle Martin’s Delicacies!
+        </div>
+        <div className="carousel-slide">
+          Indulge in Our Freshly Baked Delights!
+        </div>
+        <div className="carousel-slide">
+          Treat Yourself — Order Your Favorites Today!
+        </div>
+      </Carousel>
       <div>
         {/* Best Sellers */}
         <h2 className="section-title">Best Sellers</h2>

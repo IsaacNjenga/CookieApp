@@ -170,3 +170,39 @@ export const feedback = [
     rating: 5,
   },
 ];
+
+export const image = [
+  "https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3250406/pexels-photo-3250406.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/3186743/pexels-photo-3186743.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/1196301/pexels-photo-1196301.jpeg?auto=compress&cs=tinysrgb&w=800",
+  "https://images.pexels.com/photos/2126268/pexels-photo-2126268.jpeg?auto=compress&cs=tinysrgb&w=800",
+];
+
+export const content = [
+  {
+    title: "Satisfaction Guaranteed",
+    text: "Our cookies are baked fresh daily, ensuring warm, gooey goodness straight from the oven to your doorstep.",
+    divider: "Baked With Love, Just For You",
+  },
+  {
+    title: "Perfect for Any Occasion",
+    text: "Whether it’s a birthday, a holiday, or a treat for yourself, our cookies make every moment sweeter.",
+    divider: "Discover Your New Favourite Flavour",
+  },
+  {
+    title: "Quality Ingredients",
+    text: "We use only the finest, all-natural ingredients, ensuring a delicious experience in every bite.",
+    divider: "Indulge In Every Bite",
+  },
+  {
+    title: "Homemade Goodness",
+    text: "Each cookie is crafted with love and care, just like Grandma used to make, bringing a taste of home to every treat.",
+    divider: "Crafted Expertly",
+  },
+  {
+    title: "Gifts from the Heart",
+    text: "Our beautifully packaged cookies make the perfect gift, spreading joy and sweetness with every box.",
+    divider: "From Our Oven to Your Doorstep",
+  },
+];

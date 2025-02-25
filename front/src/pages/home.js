@@ -1,59 +1,24 @@
 import React from "react";
-import { Card, Carousel, Divider, Rate } from "antd";
-import { feedback } from "../assets/data/data";
+import { Button, Card, Divider, Rate } from "antd";
+import { feedback, image, content } from "../assets/data/data";
 import "../assets/css/home.css";
+import { ShopOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 function Home() {
-  const image = [
-    "https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/3250406/pexels-photo-3250406.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/3186743/pexels-photo-3186743.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/1196301/pexels-photo-1196301.jpeg?auto=compress&cs=tinysrgb&w=800",
-    "https://images.pexels.com/photos/2126268/pexels-photo-2126268.jpeg?auto=compress&cs=tinysrgb&w=800",
-  ];
-
-  const content = [
-    {
-      title: "Satisfaction Guaranteed",
-      text: "Our cookies are baked fresh daily, ensuring warm, gooey goodness straight from the oven to your doorstep.",
-      divider: "Baked With Love, Just For You",
-    },
-    {
-      title: "Perfect for Any Occasion",
-      text: "Whether it’s a birthday, a holiday, or a treat for yourself, our cookies make every moment sweeter.",
-      divider: "Discover Your New Favourite Flavour",
-    },
-    {
-      title: "Quality Ingredients",
-      text: "We use only the finest, all-natural ingredients, ensuring a delicious experience in every bite.",
-      divider: "Indulge In Every Bite",
-    },
-    {
-      title: "Homemade Goodness",
-      text: "Each cookie is crafted with love and care, just like Grandma used to make, bringing a taste of home to every treat.",
-      divider: "Crafted Expertly",
-    },
-    {
-      title: "Gifts from the Heart",
-      text: "Our beautifully packaged cookies make the perfect gift, spreading joy and sweetness with every box.",
-      divider: "From Our Oven to Your Doorstep",
-    },
-  ];
-
   return (
     <>
-      {/* Hero Section */}
-      <Carousel autoplay className="carousel" dots={false} effect="fade">
-        <div className="carousel-slide">
-          Step into Uncle Martin’s Delicacies!
+      <div className="home-banner-container">
+        <div className="home-banner-content">
+          <h1>Craving Something Sweet?</h1>
+          <h2>Treat Yourself — Experience Bliss</h2>
+          <Button className="shop-button">
+            <Link to="/shop">
+              <ShopOutlined /> To Shop
+            </Link>
+          </Button>
         </div>
-        <div className="carousel-slide">
-          Indulge in Our Freshly Baked Delights!
-        </div>
-        <div className="carousel-slide">
-          Treat Yourself—Order Your Favorites Today!
-        </div>
-      </Carousel>
+      </div>
 
       {/* Image and Text Sections */}
       <div className="content-container">
