@@ -1,160 +1,119 @@
-import React, { useState } from "react";
-import { Carousel, Card, Button, Row, Col, Image, Divider, Rate } from "antd";
-import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
-import CookieModal from "../components/cookieModal.js";
+import React from "react";
+import { Card, Carousel, Divider, Rate } from "antd";
+import { feedback } from "../assets/data/data";
+import "../assets/css/home.css";
 
 function Home() {
-  const [openModal, setOpenModal] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [modalContent, setModalContent] = useState(null);
+  const image = [
+    "https://images.pexels.com/photos/301972/pexels-photo-301972.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/3250406/pexels-photo-3250406.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/3186743/pexels-photo-3186743.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/1196301/pexels-photo-1196301.jpeg?auto=compress&cs=tinysrgb&w=800",
+    "https://images.pexels.com/photos/2126268/pexels-photo-2126268.jpeg?auto=compress&cs=tinysrgb&w=800",
+  ];
 
-  const viewCookie = (item) => {
-    setOpenModal(true);
-    setLoading(true);
-    setModalContent(item);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  };
+  const content = [
+    {
+      title: "Satisfaction Guaranteed",
+      text: "Our cookies are baked fresh daily, ensuring warm, gooey goodness straight from the oven to your doorstep.",
+      divider: "Baked With Love, Just For You",
+    },
+    {
+      title: "Perfect for Any Occasion",
+      text: "Whether it’s a birthday, a holiday, or a treat for yourself, our cookies make every moment sweeter.",
+      divider: "Discover Your New Favourite Flavour",
+    },
+    {
+      title: "Quality Ingredients",
+      text: "We use only the finest, all-natural ingredients, ensuring a delicious experience in every bite.",
+      divider: "Indulge In Every Bite",
+    },
+    {
+      title: "Homemade Goodness",
+      text: "Each cookie is crafted with love and care, just like Grandma used to make, bringing a taste of home to every treat.",
+      divider: "Crafted Expertly",
+    },
+    {
+      title: "Gifts from the Heart",
+      text: "Our beautifully packaged cookies make the perfect gift, spreading joy and sweetness with every box.",
+      divider: "From Our Oven to Your Doorstep",
+    },
+  ];
 
   return (
     <>
-      <div style={{ alignItems: "center" }}>
-        {/* Hero Section */}
-        <Carousel autoplay>
-          <div>
-            <h1 className="carousel-text">Welcome to Uncle Martin’s Cookies</h1>
-          </div>
-          <div>
-            <h1 className="carousel-text">Freshly Baked, Always Delicious</h1>
-          </div>
-          <div>
-            <h1 className="carousel-text">Order Your Favorites Today!</h1>
-          </div>
-        </Carousel>
+      {/* Hero Section */}
+      <Carousel autoplay className="carousel" dots={false} effect="fade">
+        <div className="carousel-slide">
+          Step into Uncle Martin’s Delicacies!
+        </div>
+        <div className="carousel-slide">
+          Indulge in Our Freshly Baked Delights!
+        </div>
+        <div className="carousel-slide">
+          Treat Yourself—Order Your Favorites Today!
+        </div>
+      </Carousel>
 
-        {/* Best Sellers */}
-        <h2 className="section-title">Best Sellers</h2>
-        <Row gutter={[10, 10]} justify="center">
-          {bestSellers.map((item, index) => (
-            <Col key={index} xs={24} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={
-                  <Image
-                    alt={item.title}
-                    src={item.img}
-                    style={{
-                      objectFit: "cover",
-                      width: "100%",
-                      height: "300px",
-                    }}
-                    className="card-image"
-                  />
-                }
-                className="cookie-card"
+      {/* Image and Text Sections */}
+      <div className="content-container">
+        {content.map((item, index) => (
+          <>
+            <Divider
+              variant="dashed"
+              style={{
+                fontSize: "22px",
+                fontWeight: "bold",
+                color: "#333",
+                textTransform: "uppercase",
+                letterSpacing: "2px",
+                textAlign: "center",
+              }}
+            >
+              <h2
+                style={{
+                  margin: 0,
+                  fontFamily: "Poppins, sans-serif",
+                  color: "#df9a73",
+                }}
               >
-                <Rate
-                  allowHalf
-                  defaultValue={item.rating}
-                  style={{ width: "100%" }}
-                />
-                <Card.Meta
-                  title={item.title}
-                  description={`KES. ${item.price}`}
-                />
-                <br />
-                <Button type="primary" block onClick={() => viewCookie(item)}>
-                  Add To Cart
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-
-        <Divider>Made for the best😉, by the best✨</Divider>
-
-        {/* New & Upcoming */}
-        <h2 className="section-title">New & Upcoming</h2>
-        <Row gutter={[10, 10]} justify="center">
-          {newCookies.map((item, index) => (
-            <Col key={index} xs={13} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<Image alt={item.title} src={item.img} />}
-                className="cookie-card"
-              >
-                <Rate allowHalf defaultValue={item.rating} />
-                <Card.Meta
-                  title={item.title}
-                  description={`KES. ${item.price}`}
-                />
-                <Button type="primary" block onClick={() => viewCookie(item)}>
-                  Add To Cart
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-
-        <Divider>
-          Tap into greatness🙌, because you deserve nothing less!
-        </Divider>
-
-        {/* Hot & Fresh */}
-        <h2 className="section-title">Hot & Fresh</h2>
-        <Row gutter={[10, 10]} justify="center">
-          {hotCookies.map((item, index) => (
-            <Col key={index} xs={13} sm={12} md={8} lg={6}>
-              <Card
-                hoverable
-                cover={<Image alt={item.title} src={item.img} />}
-                className="cookie-card"
-              >
-                <Rate allowHalf defaultValue={item.rating} />
-                <Card.Meta
-                  title={item.title}
-                  description={`KES. ${item.price}`}
-                />
-                <Button type="primary" block onClick={() => viewCookie(item)}>
-                  Add To Cart
-                </Button>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+                {item.divider}
+              </h2>
+            </Divider>
+            <div
+              key={index}
+              className={`section ${
+                index % 2 === 0 ? "image-right" : "image-left"
+              }`}
+            >
+              <img
+                src={image[index]}
+                alt={item.title}
+                className="section-image"
+              />
+              <div className="section-text">
+                <h1 style={{ color: "#f43636" }}>{item.title}</h1>
+                <h2 style={{ color: "#92544f" }}>{item.text}</h2>
+              </div>
+            </div>
+          </>
+        ))}
       </div>
-
-      <CookieModal
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        modalContent={modalContent}
-        loading={loading}
-      />
-
-      {/* Mobile Styling */}
-      <style>
-        {`
-          .carousel-text {
-            text-align: center;
-            font-size: 24px;
-          }
-          @media (max-width: 768px) {
-
-
-            .carousel-text {
-              font-size: 18px;
-            }
-            .section-title {
-              font-size: 20px;
-              text-align: center;
-            }
-            .cookie-card {
-              text-align: left;
-            }
-          }
-        `}
-      </style>
+      <Divider>
+        <h2>What Our Customers Say</h2>
+      </Divider>
+      {/* Testimonials Section */}
+      <div className="testimonials">
+        <div className="feedback-cards">
+          {feedback.map((f) => (
+            <Card key={f.id} className="feedback-card">
+              <Rate allowHalf defaultValue={f.rating} className="rating" />
+              <p className="feedback-text">"{f.feedback}"</p>
+              <p className="feedback-author">- {f.name}</p>
+            </Card>
+          ))}
+        </div>
+      </div>
     </>
   );
 }

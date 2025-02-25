@@ -133,7 +133,7 @@ function Navbar() {
 
       {/* Footer */}
       <Footer style={{ textAlign: "center" }}>
-        ©{new Date().getFullYear()} Created by Me
+        ©{new Date().getFullYear()} Created by Njenga
       </Footer>
     </Layout>
   );

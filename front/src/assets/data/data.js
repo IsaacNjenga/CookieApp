@@ -125,3 +125,48 @@ export const hotCookies = [
     stock: 6,
   },
 ];
+
+export const feedback = [
+  {
+    id: 1,
+    name: "Emily Johnson",
+    feedback:
+      "Absolutely the best cookies I've ever tasted! The chocolate chip is my favorite—so gooey and fresh!",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Michael Smith",
+    feedback:
+      "I love the variety of flavors available. The oatmeal raisin cookies remind me of my childhood!",
+    rating: 4,
+  },
+  {
+    id: 3,
+    name: "Sarah Lee",
+    feedback:
+      "These cookies are a game changer! Perfect for gifting or just treating myself. Highly recommend!",
+    rating: 5,
+  },
+  {
+    id: 4,
+    name: "David Brown",
+    feedback:
+      "I ordered a dozen for a party, and they were a hit! Everyone loved them, especially the peanut butter cookies.",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Jessica Taylor",
+    feedback:
+      "The cookies are delicious, but I wish there were more gluten-free options. Still, I’ll be back for more!",
+    rating: 4,
+  },
+  {
+    id: 6,
+    name: "Chris Wilson",
+    feedback:
+      "I appreciate the quality ingredients used. It makes a noticeable difference in taste. Will definitely order again!",
+    rating: 5,
+  },
+];
