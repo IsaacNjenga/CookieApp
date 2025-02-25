@@ -1,10 +1,29 @@
 import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
-import React from "react";
+import React, { createContext, useContext } from "react";
+import { UserContext } from "../App";
 
 const { Title, Text } = Typography;
 
-function Cart({ cartItems, updateCart }) {
-  const removeFromCart = () => {};
+function Cart({ closeDrawer }) {
+  const { cartItems, setCartItems } = useContext(UserContext);
+
+  const removeFromCart = (item) => {
+    setCartItems((prevCartItems) =>
+      prevCartItems.filter((cartItem) => cartItem.id !== item.id)
+    );
+  };
+
+  const updateCart = (item, newQuantity) => {
+    if (newQuantity < 1) return; // Prevents setting quantity below 1
+
+    setCartItems((prevCartItems) =>
+      prevCartItems.map((cartItem) =>
+        cartItem.id === item.id
+          ? { ...cartItem, quantity: newQuantity }
+          : cartItem
+      )
+    );
+  };
 
   return (
     <div style={{ padding: "0 10px" }}>
@@ -39,7 +58,7 @@ function Cart({ cartItems, updateCart }) {
                     onClick={() => removeFromCart(item)}
                     style={{ fontSize: "0.9rem", padding: "5px 10px" }}
                   >
-                    Remove
+                    Remove Item
                   </Button>,
                 ]}
               >
@@ -85,18 +104,32 @@ function Cart({ cartItems, updateCart }) {
             </Title>
           </div>
 
-          <Button
-            type="primary"
-            block
-            size="large"
-            style={{
-              fontSize: "1rem",
-              padding: "12px",
-              marginTop: "10px",
-            }}
-          >
-            Proceed to Checkout
-          </Button>
+          <div>
+            <Button
+              type="primary"
+              size="large"
+              style={{
+                fontSize: "1rem",
+                padding: "12px",
+                margin: "0px 10px",
+              }}
+              onClick={closeDrawer}
+            >
+              Continue Browsing
+            </Button>
+            <Button
+              type="primary"
+              size="large"
+              style={{
+                fontSize: "1rem",
+                padding: "12px",
+                margin: "10px 10px",
+                background: "green",
+              }}
+            >
+              Proceed to Checkout
+            </Button>
+          </div>
         </>
       )}
     </div>

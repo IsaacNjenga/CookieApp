@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Layout, Menu, Drawer, Button, FloatButton } from "antd";
+import React, { useState, useEffect, useContext } from "react";
+import { Layout, Menu, Drawer, Button, FloatButton, Space } from "antd";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   HeartOutlined,
@@ -12,6 +12,8 @@ import {
 } from "@ant-design/icons";
 import cookie_logo from "../assets/icons/cookie.png";
 import FooterContent from "./footer";
+import { UserContext } from "../App";
+import Cart from "../pages/cart";
 
 const { Header, Content, Footer } = Layout;
 
@@ -19,7 +21,10 @@ function Navbar() {
   const location = useLocation();
   const [current, setCurrent] = useState(location.pathname);
   const [drawerVisible, setDrawerVisible] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const { cartItems } = useContext(UserContext);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  console.log(cartItems);
 
   const navItems = [
     { label: "Home", icon: HomeOutlined, path: "/" },
@@ -33,6 +38,14 @@ function Navbar() {
   const handleClick = (e) => setCurrent(e.key);
 
   const toggleDrawer = () => setDrawerVisible(!drawerVisible);
+
+  const showDrawer = () => {
+    setOpenDrawer(true);
+  };
+
+  const closeDrawer = () => {
+    setOpenDrawer(false);
+  };
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -60,14 +73,43 @@ function Navbar() {
         >
           {/* Logo */}
           <div style={{ display: "flex", alignItems: "center" }}>
-            <img
-              src={cookie_logo}
-              alt="logo"
-              style={{ width: "50px", height: "50px", marginRight: "10px" }}
-            />
-            <h1 style={{ color: "#e39a67", margin: 0, fontSize: "1.8rem" }}>
-              Uncle Martin's Cookies
-            </h1>
+            {isMobile ? (
+              <>
+                <img
+                  src={cookie_logo}
+                  alt="logo"
+                  style={{ width: "55px", height: "55px", marginRight: "10px" }}
+                />
+                <h1
+                  style={{
+                    color: "#e39a67",
+                    margin: 0,
+                    fontSize: "1.3rem",
+                    letterSpacing: "0px",
+                  }}
+                >
+                  Uncle Martin's Cookies
+                </h1>
+              </>
+            ) : (
+              <>
+                <img
+                  src={cookie_logo}
+                  alt="logo"
+                  style={{ width: "60px", height: "60px", marginRight: "10px" }}
+                />
+                <h1
+                  style={{
+                    color: "#e39a67",
+                    margin: 0,
+                    fontSize: "1.8rem",
+                    letterSpacing: "2px",
+                  }}
+                >
+                  Uncle Martin's Cookies
+                </h1>
+              </>
+            )}
           </div>
 
           {/* Desktop Navigation */}
@@ -96,9 +138,28 @@ function Navbar() {
                   </Menu.Item>
                 ))}
               </Menu>
-              <Button title="View Cart" type="primary">
+              <Button
+                title="View Cart"
+                type={cartItems.length > 0 ? "primary" : ""}
+                onClick={showDrawer}
+              >
                 <ShoppingCartOutlined style={{ fontSize: "1.5rem" }} />
               </Button>
+
+              <Drawer
+                title="Your Cart"
+                width={isMobile ? 350 : 600}
+                onClose={closeDrawer}
+                open={openDrawer}
+                styles={{ body: { paddingBottom: 60 } }}
+                extra={
+                  <Space>
+                    <Button onClick={closeDrawer}>Cancel</Button>
+                  </Space>
+                }
+              >
+                <Cart />
+              </Drawer>
             </>
           ) : (
             <Button

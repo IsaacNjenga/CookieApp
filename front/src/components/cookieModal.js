@@ -11,15 +11,16 @@ import {
   Space,
   InputNumber,
 } from "antd";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Cart from "../pages/cart";
+import { UserContext } from "../App";
 
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
   const [openDrawer, setOpenDrawer] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const [cartItems, setCartItems] = useState([]);
+  const { cartItems, setCartItems } = useContext(UserContext);
 
   const showDrawer = () => {
     setOpenDrawer(true);
@@ -32,22 +33,26 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
   const handleAddToCart = () => {
     if (quantity > 0) {
       setCartItems((prevCartItems) => {
-        const existingItemIndex = prevCartItems.findIndex(
-          (item) => item.id === modalContent.id
-        );
-
-        if (existingItemIndex !== -1) {
-          const updatedCart = [...prevCartItems];
-          updatedCart[existingItemIndex].quantity += quantity;
-          return updatedCart;
+        // Check if the item already exists in the cart
+        const existingItem = prevCartItems.find(item => item.id === modalContent.id);
+  
+        if (existingItem) {
+          // If it exists, update the quantity
+          return prevCartItems.map(item =>
+            item.id === modalContent.id
+              ? { ...item, quantity: item.quantity + quantity } // Add new quantity
+              : item
+          );
         } else {
+          // Otherwise, add a new item
           return [...prevCartItems, { ...modalContent, quantity }];
         }
       });
-
+  
       showDrawer();
     }
   };
+  
 
   return (
     <Modal
@@ -125,7 +130,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
                 </Space>
               }
             >
-              <Cart cartItems={cartItems} />
+              <Cart closeDrawer={closeDrawer}/>
             </Drawer>
           </Col>
         </Row>
