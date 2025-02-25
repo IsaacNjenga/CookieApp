@@ -58,30 +58,15 @@ function Home() {
       {/* Image and Text Sections */}
       <div className="content-container">
         {content.map((item, index) => (
-          <>
+          <React.Fragment key={index}>
             <Divider
-              variant="dashed"
-              style={{
-                fontSize: "22px",
-                fontWeight: "bold",
-                color: "#333",
-                textTransform: "uppercase",
-                letterSpacing: "2px",
-                textAlign: "center",
-              }}
+              variant="solid"
+              className="home-divider"
+              style={{ borderColor: "#e09b69" }}
             >
-              <h2
-                style={{
-                  margin: 0,
-                  fontFamily: "Poppins, sans-serif",
-                  color: "#df9a73",
-                }}
-              >
-                {item.divider}
-              </h2>
+              <h2>{item.divider}</h2>
             </Divider>
             <div
-              key={index}
               className={`section ${
                 index % 2 === 0 ? "image-right" : "image-left"
               }`}
@@ -92,11 +77,15 @@ function Home() {
                 className="section-image"
               />
               <div className="section-text">
-                <h1 style={{ color: "#f43636" }}>{item.title}</h1>
-                <h2 style={{ color: "#92544f" }}>{item.text}</h2>
+                <h1 style={{ color: "#f43636", fontSize: "1.5rem" }}>
+                  {item.title}
+                </h1>
+                <h2 style={{ color: "#92544f", fontSize: "1.2rem" }}>
+                  {item.text}
+                </h2>
               </div>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </div>
       <Divider>
@@ -108,8 +97,12 @@ function Home() {
           {feedback.map((f) => (
             <Card key={f.id} className="feedback-card">
               <Rate allowHalf defaultValue={f.rating} className="rating" />
-              <p className="feedback-text">"{f.feedback}"</p>
-              <p className="feedback-author">- {f.name}</p>
+              <p className="feedback-text" style={{ fontSize: "1rem" }}>
+                "{f.feedback}"
+              </p>
+              <p className="feedback-author" style={{ fontSize: "0.9rem" }}>
+                - {f.name}
+              </p>
             </Card>
           ))}
         </div>
