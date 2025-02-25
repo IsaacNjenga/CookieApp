@@ -22,7 +22,7 @@ function Navbar() {
   const [current, setCurrent] = useState(location.pathname);
   const [drawerVisible, setDrawerVisible] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  const { cartItems, showDrawer, closeDrawer, openDrawer, setOpenDrawer } =
+  const { cartItems, showDrawer, closeDrawer, openDrawer } =
     useContext(UserContext);
 
   const navItems = [
@@ -52,8 +52,23 @@ function Navbar() {
           title="View Your Cart"
           type={cartItems.length > 0 ? "primary" : ""}
           onClick={showDrawer}
+          badge={{ dot: cartItems.length > 0 ? true : false }}
           style={{ display: isMobile ? "block" : "none" }}
-        />
+        />{" "}
+        <Drawer
+          title="Your Cart"
+          width={isMobile ? 350 : 600}
+          onClose={closeDrawer}
+          open={openDrawer}
+          styles={{ body: { paddingBottom: 60 } }}
+          extra={
+            <Space>
+              <Button onClick={closeDrawer}>Cancel</Button>
+            </Space>
+          }
+        >
+          <Cart />
+        </Drawer>
         <FloatButton.BackTop title="Back to top" />
       </FloatButton.Group>
       <Layout style={{ minHeight: "100vh" }}>
@@ -142,6 +157,7 @@ function Navbar() {
                 title="View Cart"
                 type={cartItems.length > 0 ? "primary" : ""}
                 onClick={showDrawer}
+                badge={{ dot: true }}
               >
                 <ShoppingCartOutlined style={{ fontSize: "1.5rem" }} />
               </Button>

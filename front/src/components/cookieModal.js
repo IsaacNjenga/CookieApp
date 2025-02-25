@@ -18,9 +18,8 @@ import { UserContext } from "../App";
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
-  const [openDrawer, setOpenDrawer] = useState(false);
   const [quantity, setQuantity] = useState(1);
-  const { cartItems, setCartItems, showDrawer, closeDrawer } =
+  const { setCartItems, showDrawer, closeDrawer, openDrawer } =
     useContext(UserContext);
 
   const handleAddToCart = () => {
