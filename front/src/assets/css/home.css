@@ -184,3 +184,15 @@
   padding: 20px 30px;
   box-shadow: 3px 3px rgb(54, 52, 52);
 }
+
+@media (max-width: 768px) {
+  .home-banner-content {
+    font-size: 1.45rem;
+    margin-left: 10px;
+    margin-top: 10px;
+  }
+
+  .shop-button {
+    font-size: 1.2rem;
+  }
+}
