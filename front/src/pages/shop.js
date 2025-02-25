@@ -164,7 +164,7 @@ function Shop() {
             className="home-divider"
             style={{ borderColor: "#e09b69" }}
           >
-            Tap into greatness🙌, you deserve nothing less!
+            Tap into greatness! 🙌
           </Divider>
 
           {/* Hot & Fresh */}
