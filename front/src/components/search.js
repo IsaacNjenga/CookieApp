@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Badge, Card, Col, Image, Input, Rate, Row, Button } from "antd";
+import {
+  Badge,
+  Card,
+  Col,
+  Image,
+  Input,
+  Rate,
+  Row,
+  Button,
+  Carousel,
+} from "antd";
 const { Search } = Input;
 
 function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
@@ -45,16 +55,35 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                         right: "10px",
                       }}
                     >
-                      <Image
-                        alt={item.title}
-                        src={item.img}
-                        width="100%"
-                        height={300}
-                        style={{
-                          objectFit: "cover",
-                        }}
-                        className="card-image"
-                      />
+                      <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
+                        {Array.isArray(item.img) && item.img.length > 0 ? (
+                          item.img.map((imgSrc, index) => (
+                            <div key={index}>
+                              <Image
+                                alt={`Slide ${index + 1}`}
+                                src={imgSrc}
+                                width="100%"
+                                height={350}
+                                style={{
+                                  objectFit: "cover",
+                                }}
+                                className="card-image"
+                              />
+                            </div>
+                          ))
+                        ) : (
+                          <Image
+                            alt={item.title}
+                            src={item.img}
+                            width="100%"
+                            height={350}
+                            style={{
+                              objectFit: "cover",
+                            }}
+                            className="card-image"
+                          />
+                        )}
+                      </Carousel>
                     </Badge.Ribbon>
                   }
                   className="cookie-card"
@@ -68,32 +97,11 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                     title={item.title}
                     description={`KES. ${item.price}`}
                   />
-                  <br />{" "}
+                  <br />
                   <div style={{ display: "flex", gap: "10px" }}>
                     <Button type="primary" onClick={() => viewCookie(item)}>
                       View
                     </Button>
-                    {/* <Button
-                      style={{ backgroundColor: "green" }}
-                      type="primary"
-                      onClick={() => addToCart(item)}
-                    >
-                      Add To Cart
-                    </Button>{" "}
-                    <Drawer
-                      title="Your Cart"
-                      width={window.innerWidth < 768 ? 350 : 600}
-                      onClose={closeDrawer}
-                      open={openDrawer}
-                      styles={{ body: { paddingBottom: 60 } }}
-                      extra={
-                        <Space>
-                          <Button onClick={closeDrawer}>Cancel</Button>
-                        </Space>
-                      }
-                    >
-                      <Cart />
-                    </Drawer> */}
                   </div>
                 </Card>
               </Col>
