@@ -13,7 +13,10 @@ export const bestSellers = [
   {
     _id: "7agf8a8f8g7d8fag8d787ga3",
     title: "Oatmeal Raisin",
-    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: [
+      "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    ],
     price: "400",
     rating: 3.5,
     category: "Healthy Choice",
@@ -81,7 +84,10 @@ export const newCookies = [
   {
     _id: "7agf8a8f5g7j8fag8d787ga9",
     title: "Macadamia Nut",
-    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    img: [
+      "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    ],
     price: "600",
     rating: 4.9,
     category: "Luxury",
@@ -106,7 +112,10 @@ export const hotCookies = [
   {
     _id: "7agf8a8fik7d8fag8d787ga9",
     title: "Matcha Green Tea",
-    img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
+    img: [
+      "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    ],
     price: "650",
     rating: 4.8,
     category: "Exotic Flavors",
