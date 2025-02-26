@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Layout, Menu, Drawer, Button, FloatButton, Space } from "antd";
+import { Layout, Menu, Drawer, Button, FloatButton, Space, Badge } from "antd";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
   HeartOutlined,
@@ -153,15 +153,14 @@ function Navbar() {
                   </Menu.Item>
                 ))}
               </Menu>
-              <Button
-                title="View Cart"
-                type={cartItems.length > 0 ? "primary" : ""}
-                onClick={showDrawer}
-                badge={{ dot: true }}
-              >
-                <ShoppingCartOutlined style={{ fontSize: "1.5rem" }} />
-              </Button>
-
+              <Badge count={cartItems.length} dot={cartItems.length > 0}>
+                <Button
+                  type={cartItems.length > 0 ? "primary" : ""}
+                  onClick={showDrawer}
+                >
+                  <ShoppingCartOutlined style={{ fontSize: "1.5rem" }} />
+                </Button>
+              </Badge>
               <Drawer
                 title="Your Cart"
                 width={isMobile ? 350 : 600}

@@ -13,38 +13,45 @@ import {
 import React, { useContext } from "react";
 import Cart from "../pages/cart";
 import { UserContext } from "../App";
+import { bestSellers, hotCookies, newCookies } from "../assets/data/data";
 
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
-  //const [quantity, setQuantity] = useState(1);
-  const { showDrawer, closeDrawer, openDrawer } = useContext(UserContext);
+  const { showDrawer, closeDrawer, openDrawer, setCartItems, setCartItem } =
+    useContext(UserContext);
 
-  // const handleAddToCart = () => {
-  //   if (quantity > 0) {
-  //     console.log(cartItems);
-  //     setCartItems((prevCartItems) => {
-  //       // Check if the item already exists in the cart
-  //       const existingItem = prevCartItems.find(
-  //         (item) => item.id === modalContent.id
-  //       );
+  const addToCart = (cookie) => {
+    const allCookies = [...bestSellers, ...newCookies, ...hotCookies];
+    const selectedCookie = allCookies.find((c) => c._id === cookie._id);
 
-  //       if (existingItem) {
-  //         // If it exists, update the quantity
-  //         return prevCartItems.map((item) =>
-  //           item.id === modalContent.id
-  //             ? { ...item, quantity: item.quantity + quantity } // Add new quantity
-  //             : item
-  //         );
-  //       } else {
-  //         // Otherwise, add a new item
-  //         return [...prevCartItems, { ...modalContent, quantity }];
-  //       }
-  //     });
+    if (!selectedCookie) {
+      console.warn("Cookie not found");
+      return;
+    }
 
-  //     showDrawer();
-  //   }
-  // };
+    setCartItem((prevCart) => {
+      const updatedCart = [
+        ...prevCart,
+        {
+          _id: selectedCookie._id,
+          title: selectedCookie.title,
+          category: selectedCookie.category,
+          description: selectedCookie.description,
+          img: selectedCookie.img,
+          price: selectedCookie.price,
+          rating: selectedCookie.rating,
+          stock: selectedCookie.stock,
+          quantity: 1,
+        },
+      ];
+
+      setCartItems(updatedCart);
+      return updatedCart;
+    });
+
+    showDrawer();
+  };
 
   return (
     <Modal
@@ -97,7 +104,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
                 fontSize: "1rem",
                 padding: "10px",
               }}
-              onClick={() => showDrawer()}
+              onClick={() => addToCart(modalContent)}
             >
               Add to Cart
             </Button>

@@ -5,7 +5,7 @@ import { UserContext } from "../App";
 const { Title, Text } = Typography;
 
 function Cart() {
-  const { cartItems, setCartItems, closeDrawer, cartItem } =
+  const { cartItems, setCartItems, closeDrawer,  } =
     useContext(UserContext);
 
   // const numberOfItems = cartItems.length;
@@ -54,7 +54,8 @@ function Cart() {
                     min={1}
                     value={item.quantity}
                     onChange={(value) => updateCart(item, value)}
-                    style={{ width: "80px" }}
+                    style={{ width: "115px" }}
+                    suffix={item.quantity > 1 ? "batches" : "batch"}
                   />,
                   <Button
                     danger

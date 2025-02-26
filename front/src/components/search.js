@@ -68,10 +68,33 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                     title={item.title}
                     description={`KES. ${item.price}`}
                   />
-                  <br />
-                  <Button type="primary" block onClick={() => viewCookie(item)}>
-                    Add To Cart
-                  </Button>
+                  <br />{" "}
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <Button type="primary" onClick={() => viewCookie(item)}>
+                      View
+                    </Button>
+                    {/* <Button
+                      style={{ backgroundColor: "green" }}
+                      type="primary"
+                      onClick={() => addToCart(item)}
+                    >
+                      Add To Cart
+                    </Button>{" "}
+                    <Drawer
+                      title="Your Cart"
+                      width={window.innerWidth < 768 ? 350 : 600}
+                      onClose={closeDrawer}
+                      open={openDrawer}
+                      styles={{ body: { paddingBottom: 60 } }}
+                      extra={
+                        <Space>
+                          <Button onClick={closeDrawer}>Cancel</Button>
+                        </Space>
+                      }
+                    >
+                      <Cart />
+                    </Drawer> */}
+                  </div>
                 </Card>
               </Col>
             ))}
