@@ -9,43 +9,42 @@ import {
   Rate,
   Drawer,
   Space,
-  InputNumber,
 } from "antd";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Cart from "../pages/cart";
 import { UserContext } from "../App";
 
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
-  const [quantity, setQuantity] = useState(1);
-  const { setCartItems, showDrawer, closeDrawer, openDrawer } =
-    useContext(UserContext);
+  //const [quantity, setQuantity] = useState(1);
+  const { showDrawer, closeDrawer, openDrawer } = useContext(UserContext);
 
-  const handleAddToCart = () => {
-    if (quantity > 0) {
-      setCartItems((prevCartItems) => {
-        // Check if the item already exists in the cart
-        const existingItem = prevCartItems.find(
-          (item) => item.id === modalContent.id
-        );
+  // const handleAddToCart = () => {
+  //   if (quantity > 0) {
+  //     console.log(cartItems);
+  //     setCartItems((prevCartItems) => {
+  //       // Check if the item already exists in the cart
+  //       const existingItem = prevCartItems.find(
+  //         (item) => item.id === modalContent.id
+  //       );
 
-        if (existingItem) {
-          // If it exists, update the quantity
-          return prevCartItems.map((item) =>
-            item.id === modalContent.id
-              ? { ...item, quantity: item.quantity + quantity } // Add new quantity
-              : item
-          );
-        } else {
-          // Otherwise, add a new item
-          return [...prevCartItems, { ...modalContent, quantity }];
-        }
-      });
+  //       if (existingItem) {
+  //         // If it exists, update the quantity
+  //         return prevCartItems.map((item) =>
+  //           item.id === modalContent.id
+  //             ? { ...item, quantity: item.quantity + quantity } // Add new quantity
+  //             : item
+  //         );
+  //       } else {
+  //         // Otherwise, add a new item
+  //         return [...prevCartItems, { ...modalContent, quantity }];
+  //       }
+  //     });
 
-      showDrawer();
-    }
-  };
+  //     showDrawer();
+  //   }
+  // };
 
   return (
     <Modal
@@ -89,14 +88,6 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
               KES.{modalContent.price}
             </Title>
 
-            <InputNumber
-              min={1}
-              value={quantity}
-              suffix={`${quantity > 1 ? "batches" : "batch"}`}
-              onChange={(value) => setQuantity(value)}
-              style={{ width: "50%", marginTop: 8 }}
-            />
-
             <Button
               type="primary"
               size="large"
@@ -106,7 +97,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
                 fontSize: "1rem",
                 padding: "10px",
               }}
-              onClick={handleAddToCart}
+              onClick={() => showDrawer()}
             >
               Add to Cart
             </Button>

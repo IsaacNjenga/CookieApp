@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   Card,
   Button,
@@ -9,16 +9,21 @@ import {
   Rate,
   Carousel,
   Badge,
+  Drawer,
+  Space,
 } from "antd";
 import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
 import CookieModal from "../components/cookieModal.js";
 import SearchComponent from "../components/search.js";
+import { UserContext } from "../App.js";
+import Cart from "./cart.js";
 
 function Shop() {
   const [openModal, setOpenModal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const { showDrawer, openDrawer, closeDrawer } = useContext(UserContext);
 
   const viewCookie = (item) => {
     setOpenModal(true);
@@ -48,14 +53,14 @@ function Shop() {
         dataSource={bestSellers}
         viewCookie={viewCookie}
       />{" "}
-     
       {searchValue === "" && (
         <div>
-          {/* Best Sellers */} <Divider
-        variant="solid"
-        className="home-divider"
-        style={{ borderColor: "#e09b69" }}
-      ></Divider>
+          {/* Best Sellers */}{" "}
+          <Divider
+            variant="solid"
+            className="home-divider"
+            style={{ borderColor: "#e09b69" }}
+          ></Divider>
           <h2 className="section-title">Our Best Sellers</h2>
           <Row gutter={[10, 10]} justify="center">
             {bestSellers.map((item, index) => (
@@ -95,14 +100,36 @@ function Shop() {
                     description={`KES. ${item.price}`}
                   />
                   <br />
-                  <Button type="primary" block onClick={() => viewCookie(item)}>
-                    Add To Cart
-                  </Button>
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <Button type="primary" onClick={() => viewCookie(item)}>
+                      View
+                    </Button>
+                    <Button
+                      style={{ backgroundColor: "green" }}
+                      type="primary"
+                      onClick={() => showDrawer()}
+                    >
+                      Add To Cart
+                    </Button>{" "}
+                    <Drawer
+                      title="Your Cart"
+                      width={window.innerWidth < 768 ? 350 : 600}
+                      onClose={closeDrawer}
+                      open={openDrawer}
+                      styles={{ body: { paddingBottom: 60 } }}
+                      extra={
+                        <Space>
+                          <Button onClick={closeDrawer}>Cancel</Button>
+                        </Space>
+                      }
+                    >
+                      <Cart />
+                    </Drawer>
+                  </div>
                 </Card>
               </Col>
             ))}
           </Row>
-
           <Divider
             variant="solid"
             className="home-divider"
@@ -110,7 +137,6 @@ function Shop() {
           >
             Made for the best😉, by the best✨
           </Divider>
-
           {/* New & Upcoming */}
           <h2 className="section-title">New & Upcoming</h2>
           <Row gutter={[10, 10]} justify="center">
@@ -158,7 +184,6 @@ function Shop() {
               </Col>
             ))}
           </Row>
-
           <Divider
             variant="solid"
             className="home-divider"
@@ -166,7 +191,6 @@ function Shop() {
           >
             Tap into greatness! 🙌
           </Divider>
-
           {/* Hot & Fresh */}
           <h2 className="section-title">Hot & Fresh</h2>
           <Row gutter={[10, 10]} justify="center">
