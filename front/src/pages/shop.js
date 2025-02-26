@@ -23,7 +23,40 @@ function Shop() {
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
   const [searchValue, setSearchValue] = useState("");
-  const { showDrawer, openDrawer, closeDrawer } = useContext(UserContext);
+  const { showDrawer, openDrawer, closeDrawer, setCartItems, setCartItem } =
+    useContext(UserContext);
+
+  const addToCart = (cookie) => {
+    const allCookies = [...bestSellers, ...newCookies, ...hotCookies];
+    const selectedCookie = allCookies.find((c) => c._id === cookie._id);
+
+    if (!selectedCookie) {
+      console.warn("Cookie not found");
+      return;
+    }
+
+    setCartItem((prevCart) => {
+      const updatedCart = [
+        ...prevCart,
+        {
+          _id: selectedCookie._id,
+          title: selectedCookie.title,
+          category: selectedCookie.category,
+          description: selectedCookie.description,
+          img: selectedCookie.img,
+          price: selectedCookie.price,
+          rating: selectedCookie.rating,
+          stock: selectedCookie.stock,
+          quantity: 1,
+        },
+      ];
+
+      setCartItems(updatedCart);
+      return updatedCart;
+    });
+
+    showDrawer();
+  };
 
   const viewCookie = (item) => {
     setOpenModal(true);
@@ -107,7 +140,7 @@ function Shop() {
                     <Button
                       style={{ backgroundColor: "green" }}
                       type="primary"
-                      onClick={() => showDrawer()}
+                      onClick={() => addToCart(item)}
                     >
                       Add To Cart
                     </Button>{" "}

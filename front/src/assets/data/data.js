@@ -1,5 +1,6 @@
 export const bestSellers = [
   {
+    _id: "7agf8a8f8g7d8fag8d787ga9",
     title: "Chocolate Chip",
     img: "https://images.pexels.com/photos/20558713/pexels-photo-20558713/free-photo-of-close-up-of-chocolate-chip-cookies-on-a-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "500",
@@ -10,6 +11,7 @@ export const bestSellers = [
     stock: 20,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d787ga3",
     title: "Oatmeal Raisin",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "400",
@@ -20,6 +22,7 @@ export const bestSellers = [
     stock: 15,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d787ga1",
     title: "Macadamia Nut",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
@@ -30,6 +33,7 @@ export const bestSellers = [
     stock: 10,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d787ga6",
     title: "Matcha Green Tea",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
@@ -43,6 +47,7 @@ export const bestSellers = [
 
 export const newCookies = [
   {
+    _id: "7agf8a8f8g7d8fag8d787gh8",
     title: "Double Chocolate",
     img: "https://images.pexels.com/photos/28857430/pexels-photo-28857430/free-photo-of-stack-of-delicious-homemade-cookies-on-plate.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "700",
@@ -53,6 +58,7 @@ export const newCookies = [
     stock: 12,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d787gn7",
     title: "Peanut Butter Delight",
     img: "https://images.pexels.com/photos/20558713/pexels-photo-20558713/free-photo-of-close-up-of-chocolate-chip-cookies-on-a-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "550",
@@ -62,6 +68,7 @@ export const newCookies = [
     stock: 18,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d787ha9",
     title: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
@@ -72,6 +79,7 @@ export const newCookies = [
     stock: 8,
   },
   {
+    _id: "7agf8a8f5g7j8fag8d787ga9",
     title: "Macadamia Nut",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
@@ -85,6 +93,7 @@ export const newCookies = [
 
 export const hotCookies = [
   {
+    _id: "7agf8a8f8g7d8fag8d787k89",
     title: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
@@ -95,6 +104,7 @@ export const hotCookies = [
     stock: 8,
   },
   {
+    _id: "7agf8a8fik7d8fag8d787ga9",
     title: "Matcha Green Tea",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
@@ -105,6 +115,7 @@ export const hotCookies = [
     stock: 6,
   },
   {
+    _id: "7agf23458g7d8fag8d787ga9",
     title: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
@@ -115,6 +126,7 @@ export const hotCookies = [
     stock: 8,
   },
   {
+    _id: "7agf8a8f8g7d8fag8d7235a9",
     title: "Matcha Green Tea",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",

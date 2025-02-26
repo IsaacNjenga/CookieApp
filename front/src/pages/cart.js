@@ -1,24 +1,27 @@
 import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "../App";
 
 const { Title, Text } = Typography;
 
 function Cart() {
-  const { cartItems, setCartItems, closeDrawer } = useContext(UserContext);
+  const { cartItems, setCartItems, closeDrawer, cartItem } =
+    useContext(UserContext);
 
-  const removeFromCart = (item) => {
+  // const numberOfItems = cartItems.length;
+
+  const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
-      prevCartItems.filter((cartItem) => cartItem.id !== item.id)
+      prevCartItems.filter((item) => item._id !== id)
     );
   };
 
   const updateCart = (item, newQuantity) => {
-    if (newQuantity < 1) return; // Prevents setting quantity below 1
+    if (newQuantity < 1) return;
 
     setCartItems((prevCartItems) =>
       prevCartItems.map((cartItem) =>
-        cartItem.id === item.id
+        cartItem._id === item._id
           ? { ...cartItem, quantity: newQuantity }
           : cartItem
       )
@@ -55,7 +58,7 @@ function Cart() {
                   />,
                   <Button
                     danger
-                    onClick={() => removeFromCart(item)}
+                    onClick={() => removeFromCart(item._id)}
                     style={{ fontSize: "0.9rem", padding: "5px 10px" }}
                   >
                     Remove Item
@@ -67,8 +70,8 @@ function Cart() {
                     <Image
                       src={item.img}
                       alt={item.title}
-                      width={50}
-                      height={50}
+                      width={65}
+                      height={65}
                       style={{
                         borderRadius: "8px",
                         objectFit: "cover",
@@ -115,7 +118,7 @@ function Cart() {
               }}
               onClick={closeDrawer}
             >
-              Continue Browsing
+              Add another Item
             </Button>
             <Button
               type="primary"

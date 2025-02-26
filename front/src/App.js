@@ -12,6 +12,7 @@ export const UserContext = createContext();
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
+  const [cartItem, setCartItem] = useState([]);
 
   const showDrawer = () => setOpenDrawer(true);
   const closeDrawer = () => setOpenDrawer(false);
@@ -19,7 +20,15 @@ function App() {
   return (
     <>
       <UserContext.Provider
-        value={{ cartItems, setCartItems, openDrawer, showDrawer, closeDrawer }}
+        value={{
+          cartItems,
+          setCartItems,
+          openDrawer,
+          showDrawer,
+          closeDrawer,
+          cartItem,
+          setCartItem,
+        }}
       >
         <BrowserRouter>
           <Routes>
