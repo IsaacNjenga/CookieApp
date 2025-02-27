@@ -9,6 +9,7 @@ import {
   SmileOutlined,
   MenuOutlined,
   ShoppingCartOutlined,
+  QuestionCircleOutlined,
 } from "@ant-design/icons";
 import cookie_logo from "../assets/icons/cookie.png";
 import FooterContent from "./footer";
@@ -31,7 +32,7 @@ function Navbar() {
     { label: "About us", icon: SmileOutlined, path: "/about-us" },
     { label: "Contact", icon: PhoneOutlined, path: "/contact" },
     { label: "Occasions", icon: HeartOutlined, path: "/occasions" },
-    { label: "Holidays", icon: SmileOutlined, path: "/holidays" },
+    { label: "FAQ", icon: QuestionCircleOutlined, path: "/faq" },
   ];
 
   const handleClick = (e) => setCurrent(e.key);
@@ -195,6 +196,7 @@ function Navbar() {
         <Drawer
           title="Menu"
           placement="right"
+          width={250}
           onClose={toggleDrawer}
           open={drawerVisible}
         >

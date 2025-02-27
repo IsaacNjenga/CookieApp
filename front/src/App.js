@@ -4,7 +4,7 @@ import Home from "./pages/home.js";
 import Shop from "./pages/shop.js";
 import Contact from "./pages/contact.js";
 import About from "./pages/about.js";
-import Holidays from "./pages/holidays.js";
+import Faq from "./pages/faq.js";
 import Occasions from "./pages/occasions.js";
 import Navbar from "./components/navbar.js";
 import Checkout from "./pages/checkout.js";
@@ -40,7 +40,7 @@ function App() {
             <Route path="/" element={<Navbar />}>
               <Route index element={<Home />} />
               <Route path="shop" element={<Shop />} />
-              <Route path="holidays" element={<Holidays />} />
+              <Route path="faq" element={<Faq />} />
               <Route path="occasions" element={<Occasions />} />
               <Route path="contact" element={<Contact />} />
               <Route path="about-us" element={<About />} />

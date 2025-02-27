@@ -1,15 +1,15 @@
 import React from "react";
 import { Collapse, Space, theme, Typography } from "antd";
-import { faq } from "../assets/data/data"; // Ensure this path is correct
+import { faq } from "../assets/data/data";
 import { CaretRightOutlined } from "@ant-design/icons";
 
 const { Title } = Typography;
 
-function Holidays() {
+function Faq() {
   const { token } = theme.useToken();
 
   return (
-    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ padding: "0px", maxWidth: "800px", margin: "0 auto" }}>
       <Title level={2} style={{ textAlign: "center", marginBottom: "20px" }}>
         Frequently Asked Questions
       </Title>
@@ -18,11 +18,11 @@ function Holidays() {
           accordion={true}
           collapsible="header"
           items={faq.map((f) => ({
-            key: f.id, // Use 'id' instead of 'key' for consistency
+            key: f.id,
             label: f.question,
-            children: <p style={{ margin: 0 }}>{f.answer}</p>, // Wrap answer in a paragraph
+            children: <p style={{ margin: 0 }}>{f.answer}</p>,
           }))}
-          defaultActiveKey={["1"]} // Change default active key if needed
+          defaultActiveKey={["1"]}
           bordered={true}
           size="large"
           expandIcon={({ isActive }) => (
@@ -35,4 +35,4 @@ function Holidays() {
   );
 }
 
-export default Holidays;
+export default Faq;
