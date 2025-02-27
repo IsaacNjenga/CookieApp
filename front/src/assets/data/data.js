@@ -227,3 +227,66 @@ export const content = [
     divider: "From Our Oven to Your Doorstep",
   },
 ];
+
+export const faq = [
+  {
+    id: 1,
+    question: "What types of cookies do you offer?",
+    answer:
+      "We offer a wide variety of cookies, including classic chocolate chip, oatmeal raisin, peanut butter, and seasonal flavors. Check our menu for the full list!",
+  },
+  {
+    id: 2,
+    question: "How do I place an order?",
+    answer:
+      "You can place an order through our website or mobile app. Simply select your desired cookies, add them to your cart, and proceed to checkout.",
+  },
+  {
+    id: 3,
+    question: "What payment methods do you accept?",
+    answer:
+      "We accept all major credit cards, PayPal, and Apple Pay for your convenience.",
+  },
+  {
+    id: 4,
+    question: "How are the cookies packaged for delivery?",
+    answer:
+      "Our cookies are carefully packaged in eco-friendly boxes to ensure they arrive fresh and intact. Each box is sealed to maintain freshness.",
+  },
+  {
+    id: 5,
+    question: "What is the delivery time?",
+    answer:
+      "Delivery times vary based on your location, but we typically deliver within 30-60 minutes after your order is placed. You will receive a notification when your cookies are on their way!",
+  },
+  {
+    id: 6,
+    question: "Can I customize my cookie order?",
+    answer:
+      "Yes! You can customize your order by selecting different flavors and quantities. For special requests, please contact our customer service.",
+  },
+  {
+    id: 7,
+    question: "What if I have food allergies?",
+    answer:
+      "We take food allergies seriously. Please check our ingredient list on the website, and if you have specific concerns, contact our customer service for assistance.",
+  },
+  {
+    id: 8,
+    question: "Do you offer refunds or exchanges?",
+    answer:
+      "If you are not satisfied with your order, please contact us within 24 hours of delivery, and we will do our best to resolve the issue, including offering refunds or exchanges.",
+  },
+  {
+    id: 9,
+    question: "Can I schedule a delivery for a later time?",
+    answer:
+      "Yes! During the checkout process, you can select a specific delivery time that works best for you.",
+  },
+  {
+    id: 10,
+    question: "How can I contact customer support?",
+    answer:
+      "You can reach our customer support team via email at support@cookieapp.com or through the chat feature on our website. We're here to help!",
+  },
+];

@@ -89,7 +89,7 @@ function Shop() {
       />{" "}
       {searchValue === "" && (
         <div>
-          {/* Best Sellers */}{" "}
+          {/* Best Sellers */}
           <Divider
             variant="solid"
             className="home-divider"
@@ -147,6 +147,7 @@ function Shop() {
                     allowHalf
                     defaultValue={item.rating}
                     style={{ width: "100%" }}
+                    disabled
                   />
                   <Card.Meta
                     title={item.title}
@@ -243,6 +244,7 @@ function Shop() {
                     allowHalf
                     defaultValue={item.rating}
                     style={{ width: "100%" }}
+                    disabled
                   />
                   <Card.Meta
                     title={item.title}
@@ -339,6 +341,7 @@ function Shop() {
                     allowHalf
                     defaultValue={item.rating}
                     style={{ width: "100%" }}
+                    disabled
                   />
                   <Card.Meta
                     title={item.title}

@@ -82,7 +82,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
             <Title level={3} style={{ fontSize: "1.5rem" }}>
               {modalContent.title}
             </Title>
-            <Rate allowHalf defaultValue={modalContent.rating || 4.5} />
+            <Rate allowHalf defaultValue={modalContent.rating} disabled />
             <Text type="secondary" style={{ display: "block", marginTop: 8 }}>
               {modalContent.category}
             </Text>

@@ -1,26 +1,36 @@
 import React from "react";
-import { List, Card } from "antd";
+import { Collapse, Space, theme, Typography } from "antd";
+import { faq } from "../assets/data/data"; // Ensure this path is correct
+import { CaretRightOutlined } from "@ant-design/icons";
 
-const holidayCookies = [
-  { name: "Christmas Sugar Cookies", description: "Festive and colorful treats." },
-  { name: "Valentine’s Heart Cookies", description: "Made with love and chocolate." },
-  { name: "Halloween Spooky Bites", description: "Pumpkin spice and everything nice." },
-];
+const { Title } = Typography;
 
 function Holidays() {
-  return (
-    <div style={{ padding: 20 }}>
-      <h2>Holiday Specials</h2>
+  const { token } = theme.useToken();
 
-      <List
-        grid={{ gutter: 16, column: 3 }}
-        dataSource={holidayCookies}
-        renderItem={(item) => (
-          <List.Item>
-            <Card title={item.name}>{item.description}</Card>
-          </List.Item>
-        )}
-      />
+  return (
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      <Title level={2} style={{ textAlign: "center", marginBottom: "20px" }}>
+        Frequently Asked Questions
+      </Title>
+      <Space direction="vertical" style={{ width: "100%" }}>
+        <Collapse
+          accordion={true}
+          collapsible="header"
+          items={faq.map((f) => ({
+            key: f.id, // Use 'id' instead of 'key' for consistency
+            label: f.question,
+            children: <p style={{ margin: 0 }}>{f.answer}</p>, // Wrap answer in a paragraph
+          }))}
+          defaultActiveKey={["1"]} // Change default active key if needed
+          bordered={true}
+          size="large"
+          expandIcon={({ isActive }) => (
+            <CaretRightOutlined rotate={isActive ? 90 : 0} />
+          )}
+          style={{ background: token.colorBgContainer }}
+        />
+      </Space>
     </div>
   );
 }
