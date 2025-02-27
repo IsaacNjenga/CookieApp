@@ -54,9 +54,7 @@ function Checkout() {
           <List.Item
             style={{ flexWrap: "wrap" }}
             actions={[
-              <div
-                style={{ display: "flex", gap: "5px", flexDirection: "column" }}
-              >
+              <div>
                 <InputNumber
                   min={1}
                   value={item.quantity}

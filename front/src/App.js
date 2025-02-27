@@ -8,8 +8,11 @@ import Holidays from "./pages/holidays.js";
 import Occasions from "./pages/occasions.js";
 import Navbar from "./components/navbar.js";
 import Checkout from "./pages/checkout.js";
-
+import axios from "axios";
 export const UserContext = createContext();
+
+axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
+axios.defaults.withCredentials = true;
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
