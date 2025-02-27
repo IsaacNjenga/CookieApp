@@ -12,6 +12,18 @@ import React from "react";
 import logo from "../assets/icons/cookie.png";
 
 function FooterContent() {
+  const toYoutTube = () => {
+    window.open("https://www.youtube.com/");
+  };
+  const toTikTok = () => {
+    window.open("https://www.tiktok.com/");
+  };
+  const toFacebook = () => {
+    window.open("https://www.facebook.com/");
+  };
+  const toInstagram = () => {
+    window.open("https://www.instagram.com/");
+  };
   return (
     <div
       style={{
@@ -29,20 +41,17 @@ function FooterContent() {
           alignItems: "center",
         }}
       >
-        <img
-          src={logo}
-          alt="logo"
-          style={{ width: "50px", marginBottom: "1px" }}
-        />
+        <img src={logo} alt="logo" style={{ width: "75px" }} />
         <h1
           style={{
-            fontSize: "2rem",
+            fontSize: "2.1rem",
             fontWeight: "bold",
             color: "#e3996b",
             fontFamily: "'Pacifico', cursive",
+            letterSpacing: "2px",
           }}
         >
-          Uncle Martin Cookies
+          Uncle Martin's Cookies
         </h1>
       </div>
 
@@ -68,10 +77,47 @@ function FooterContent() {
               justifyContent: "center",
             }}
           >
-            <TikTokOutlined />
-            <FacebookFilled />
-            <YoutubeFilled />
-            <InstagramOutlined />
+            <TikTokOutlined
+              style={{
+                background: "white",
+                color: "black",
+                borderRadius: "50%",
+                padding: "10px",
+              }}
+              title="TikTok"
+              onClick={toTikTok}
+            />
+            <FacebookFilled
+              style={{
+                background: "white",
+                color: "#0b65ff",
+                borderRadius: "50%",
+                padding: "10px",
+              }}
+              title="Facebook"
+              onClick={toFacebook}
+            />
+            <YoutubeFilled
+              style={{
+                background: "white",
+                color: "red",
+                borderRadius: "50%",
+                padding: "10px",
+              }}
+              title="YouTube"
+              onClick={toYoutTube}
+            />
+            <InstagramOutlined
+              style={{
+                background:
+                  "radial-gradient(circle at 30% 110%, #ffdb8b 0%, #ee653d 25%, #d42e81 50%, #a237b6 75%, #3e57bc 100%)",
+                borderRadius: "50%",
+                padding: "10px",
+                color: "#fff",
+              }}
+              title="Instagram"
+              onClick={toInstagram}
+            />
           </div>
         </div>
 
@@ -93,14 +139,43 @@ function FooterContent() {
             }}
           >
             <div>
-              <PhoneOutlined
-                style={{ fontSize: "40px", padding: "0px 10px" }}
-              />
-              0740900061
-            </div>
-            <div>
-              <MailOutlined style={{ fontSize: "40px", padding: "0px 7px" }} />{" "}
-              ayzzoh20@gmail.com
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "10px",
+                }}
+              >
+                <PhoneOutlined
+                  style={{
+                    fontSize: "40px",
+                    background: "white",
+                    color: "black",
+                    borderRadius: "50%",
+                    padding: "10px",
+                    marginRight: "10px",
+                  }}
+                />
+                <p style={{ margin: 0 }}>+254 720 500-844</p>
+              </div>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <MailOutlined
+                  style={{
+                    fontSize: "40px",
+                    background: "white",
+                    color: "black",
+                    borderRadius: "50%",
+                    padding: "10px",
+                    marginRight: "10px",
+                  }}
+                />
+                <a
+                  href="mailto:tintin@gmail.com"
+                  style={{ textDecoration: "none", color: "white" }}
+                >
+                  <p style={{ margin: 0 }}>tintin@gmail.com</p>
+                </a>
+              </div>
             </div>
           </div>
         </div>
