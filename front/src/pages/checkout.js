@@ -1,13 +1,20 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../App";
 import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const { Title, Text } = Typography;
 
 function Checkout() {
+  const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(UserContext);
+
+  useEffect(() => {
+    if (cartItems.length === 0) {
+      navigate("/shop");
+    }
+  }, [cartItems]);
 
   const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
