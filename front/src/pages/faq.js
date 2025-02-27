@@ -19,7 +19,7 @@ function Faq() {
           collapsible="header"
           items={faq.map((f) => ({
             key: f.id,
-            label: f.question,
+            label: <h4 style={{ margin: 0 }}>{f.question}</h4>,
             children: <p style={{ margin: 0 }}>{f.answer}</p>,
           }))}
           defaultActiveKey={["1"]}
