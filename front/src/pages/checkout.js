@@ -1,12 +1,14 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { UserContext } from "../App";
 import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const { Title, Text } = Typography;
 
 function Checkout() {
   const { cartItems, setCartItems } = useContext(UserContext);
+
   const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
       prevCartItems.filter((item) => item._id !== id)
@@ -24,6 +26,18 @@ function Checkout() {
       )
     );
   };
+
+  const checkout = () => {
+    if (cartItems.length === 0) {
+      return Swal.fire({
+        icon: "warning",
+        title: "Your cart is empty",
+        text: "Please add an item to checkout",
+      });
+    }
+
+    console.log("checkout!");
+  };
   return (
     <>
       <List
@@ -33,20 +47,26 @@ function Checkout() {
           <List.Item
             style={{ flexWrap: "wrap" }}
             actions={[
-              <InputNumber
-                min={1}
-                value={item.quantity}
-                onChange={(value) => updateCart(item, value)}
-                style={{ width: "115px" }}
-                suffix={item.quantity > 1 ? "batches" : "batch"}
-              />,
-              <Button
-                danger
-                onClick={() => removeFromCart(item._id)}
-                style={{ fontSize: "0.9rem", padding: "5px 10px" }}
+              <div
+                style={{ display: "flex", gap: "5px", flexDirection: "column" }}
               >
-                Remove Item
-              </Button>,
+                <InputNumber
+                  min={1}
+                  value={item.quantity}
+                  onChange={(value) => updateCart(item, value)}
+                  style={{ width: "115px" }}
+                  suffix={item.quantity > 1 ? "batches" : "batch"}
+                />
+                ,
+                <Button
+                  danger
+                  onClick={() => removeFromCart(item._id)}
+                  style={{ fontSize: "0.9rem", padding: "5px 10px" }}
+                >
+                  Remove Item
+                </Button>
+                ,
+              </div>,
             ]}
           >
             <List.Item.Meta
@@ -101,7 +121,9 @@ function Checkout() {
             margin: "0px 10px",
           }}
         >
-          <Link to="/shop">Add another Item</Link>
+          <Link to="/shop">{`${
+            cartItems.length > 0 ? "Add another item" : "Add an item"
+          }`}</Link>
         </Button>
         <Button
           type="primary"
@@ -112,6 +134,7 @@ function Checkout() {
             margin: "10px 10px",
             background: "green",
           }}
+          onClick={checkout}
         >
           Checkout
         </Button>

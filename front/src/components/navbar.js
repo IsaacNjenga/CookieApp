@@ -100,7 +100,8 @@ function Navbar() {
                     color: "#e39a67",
                     margin: 0,
                     fontSize: "1.3rem",
-                    letterSpacing: "0px",
+                    letterSpacing: "1px",
+                    fontFamily: "'Pacifico', cursive",
                   }}
                 >
                   Uncle Martin's Cookies
@@ -119,6 +120,7 @@ function Navbar() {
                     margin: 0,
                     fontSize: "1.8rem",
                     letterSpacing: "2px",
+                    fontFamily: "'Pacifico', cursive",
                   }}
                 >
                   Uncle Martin's Cookies

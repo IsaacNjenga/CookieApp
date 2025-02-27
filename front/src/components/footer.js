@@ -34,7 +34,14 @@ function FooterContent() {
           alt="logo"
           style={{ width: "50px", marginBottom: "1px" }}
         />
-        <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "#e3996b" }}>
+        <h1
+          style={{
+            fontSize: "2rem",
+            fontWeight: "bold",
+            color: "#e3996b",
+            fontFamily: "'Pacifico', cursive",
+          }}
+        >
           Uncle Martin Cookies
         </h1>
       </div>
