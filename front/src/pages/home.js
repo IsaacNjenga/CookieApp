@@ -1,5 +1,5 @@
 import React from "react";
-import { Badge, Button, Card, Divider, Rate } from "antd";
+import { Badge, Button, Card, Divider, Image, Rate } from "antd";
 import { feedback, image, content } from "../assets/data/data";
 import "../assets/css/home.css";
 import { ShopOutlined } from "@ant-design/icons";
@@ -43,7 +43,8 @@ function Home() {
                 index % 2 === 0 ? "image-right" : "image-left"
               }`}
             >
-              <img
+              <Image
+                preview={false}
                 src={image[index]}
                 alt={item.title}
                 className="section-image"

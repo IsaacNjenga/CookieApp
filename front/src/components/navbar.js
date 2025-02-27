@@ -29,9 +29,9 @@ function Navbar() {
   const navItems = [
     { label: "Home", icon: HomeOutlined, path: "/" },
     { label: "Shop", icon: ShopOutlined, path: "/shop" },
+    { label: "Reach Out", icon: PhoneOutlined, path: "/contact" },
     { label: "About us", icon: SmileOutlined, path: "/about-us" },
-    { label: "Contact", icon: PhoneOutlined, path: "/contact" },
-    { label: "Occasions", icon: HeartOutlined, path: "/occasions" },
+    { label: "Add Cookie", icon: HeartOutlined, path: "/add-cookie" },
     { label: "FAQ", icon: QuestionCircleOutlined, path: "/faq" },
   ];
 
@@ -48,14 +48,17 @@ function Navbar() {
   return (
     <>
       <FloatButton.Group shape="circle" style={{ insetInlineEnd: 24 }}>
-        <FloatButton
-          icon={<ShoppingCartOutlined />}
-          title="View Your Cart"
-          type={cartItems.length > 0 ? "primary" : ""}
-          onClick={showDrawer}
-          badge={{ dot: cartItems.length > 0 ? true : false }}
-          style={{ display: isMobile ? "block" : "none" }}
-        />{" "}
+        {isMobile && (
+          <Badge count={cartItems.length}>
+            <FloatButton
+              icon={<ShoppingCartOutlined />}
+              title="View Your Cart"
+              type={cartItems.length > 0 ? "primary" : ""}
+              onClick={showDrawer}
+              style={{ display: isMobile ? "block" : "none" }}
+            />{" "}
+          </Badge>
+        )}
         <Drawer
           title="Your Cart"
           width={isMobile ? 350 : 600}
@@ -156,7 +159,7 @@ function Navbar() {
                   </Menu.Item>
                 ))}
               </Menu>
-              <Badge count={cartItems.length} dot={cartItems.length > 0}>
+              <Badge count={cartItems.length}>
                 <Button
                   type={cartItems.length > 0 ? "primary" : ""}
                   onClick={showDrawer}

@@ -95,7 +95,7 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                   />
                   <Card.Meta
                     title={item.title}
-                    description={`KES. ${item.price}`}
+                    description={`KES. ${item.price} | ${item.category}`}
                   />
                   <br />
                   <div style={{ display: "flex", gap: "10px" }}>

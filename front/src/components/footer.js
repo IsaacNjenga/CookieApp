@@ -123,7 +123,7 @@ function FooterContent() {
 
         <div
           className="border-div"
-          style={{ width: "1px", background: "white", height: "60px" }}
+          style={{ width: "1px", background: "white", height: "200px" }}
         ></div>
 
         {/* Contact Information */}
