@@ -7,6 +7,7 @@ import About from "./pages/about.js";
 import Holidays from "./pages/holidays.js";
 import Occasions from "./pages/occasions.js";
 import Navbar from "./components/navbar.js";
+import Checkout from "./pages/checkout.js";
 
 export const UserContext = createContext();
 function App() {
@@ -40,6 +41,7 @@ function App() {
               <Route path="occasions" element={<Occasions />} />
               <Route path="contact" element={<Contact />} />
               <Route path="about-us" element={<About />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Route>
           </Routes>
         </BrowserRouter>

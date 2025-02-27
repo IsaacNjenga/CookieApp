@@ -1,14 +1,12 @@
 import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
 import React, { useContext } from "react";
 import { UserContext } from "../App";
+import { Link } from "react-router-dom";
 
 const { Title, Text } = Typography;
 
 function Cart() {
-  const { cartItems, setCartItems, closeDrawer,  } =
-    useContext(UserContext);
-
-  // const numberOfItems = cartItems.length;
+  const { cartItems, setCartItems, closeDrawer } = useContext(UserContext);
 
   const removeFromCart = (id) => {
     setCartItems((prevCartItems) =>
@@ -130,8 +128,9 @@ function Cart() {
                 margin: "10px 10px",
                 background: "green",
               }}
+              onClick={closeDrawer}
             >
-              Proceed to Checkout
+              <Link to="/checkout">Proceed to Checkout</Link>
             </Button>
           </div>
         </>
