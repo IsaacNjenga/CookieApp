@@ -6,8 +6,14 @@ import {
   getCookies,
   updateCookie,
 } from "../controllers/cookieController.js";
+
+import { Login, Register } from "../controllers/userController.js";
 import { deleteImage } from "../controllers/cloudinaryController.js";
 const router = express.Router();
+
+//user endpoints
+router.post("/login", Login);
+router.post("/register", Register);
 
 //cookie endpoints
 router.post("/add-cookie", createCookie);

@@ -1,19 +1,76 @@
 import { Button, Card, Divider, Form, Input } from "antd";
-import React from "react";
+import React, { useContext, useState } from "react";
 import cookie_logo from "../assets/icons/cookie.png";
+import Swal from "sweetalert2";
+import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
+import axios from "axios";
+import { UserContext } from "../App";
 function Login() {
-  const [form] = Form.useForm();
-  const handleChange = () => {};
+  const [values, setValues] = useState({ email: "", password: "" });
+  const [loading, setLoading] = useState(false);
+  const { setUser } = useContext(UserContext);
 
-  const handleSubmit = () => {};
+  const [form] = Form.useForm();
+  const handleChange = (name, value) => {
+    setValues((prevValues) => ({ ...prevValues, [name]: value }));
+  };
+
+  const handleSubmit = async () => {
+    const { email, password } = values;
+    setLoading(true);
+    try {
+      const response = await axios.post(
+        `login`,
+        { email, password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
+        }
+      );
+      const { success, user, token } = response.data;
+      if (success) {
+        localStorage.setItem("token", token);
+        setUser(user);
+        localStorage.setItem("showLoginNotification", "true");
+        //navigate("/");
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Login failed",
+          text: "Please enter the correct details",
+        });
+      }
+    } catch (error) {
+      console.error("Error during login", error);
+      if (error.response && error.response.status === 400) {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: error.response.data.error,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Something went wrong!",
+        });
+      }
+    } finally {
+      form.resetFields();
+      setValues({ email: "", password: "" });
+      setLoading(false);
+    }
+  };
   return (
     <>
       <Card
         style={{
           background: "#e39869",
           maxWidth: 600,
-          margin: "20px auto",
-          padding: 30,
+          margin: "10px auto",
+          padding: 0,
           color: "white",
         }}
       >
@@ -21,61 +78,57 @@ function Login() {
           <div
             style={{
               background: "white",
-              margin: "1px 5px",
-              padding: "3px 12px",
+              margin: "1px auto",
+              padding: "1px 15px",
               borderRadius: "15px",
             }}
           >
             <img
               src={cookie_logo}
               alt="logo"
-              style={{ width: "30px", height: "30px", marginRight: "10px" }}
+              style={{ width: "30px", height: "30px", marginTop: "5px" }}
             />
-            <h1
-              style={{
-                color: "#e39869",
-                margin: 0,
-                fontSize: "1.2rem",
-                letterSpacing: "1px",
-                fontFamily: "'Pacifico', cursive",
-              }}
-            >
-              Uncle Martin's Cookies
-            </h1>
           </div>
         </Divider>
         <Form layout="vertical" form={form} onFinish={handleSubmit}>
           <Form.Item
-            label={<span style={{ color: "#fff", fontSize: 20 }}>Email</span>}
+            label={<span style={{ color: "#fff", fontSize: 18 }}>Email</span>}
             name="email"
             rules={[{ required: true, message: "This field is required" }]}
           >
             <Input
-              onChange={(value) => handleChange("email", value)}
-              value=""
+              onChange={(e) => handleChange("email", e.target.value)}
+              value={values.email}
+              placeholder="Enter email"
               style={{
                 background: "#e39869",
                 border: "1px solid white",
                 height: 40,
-                fontSize: 16,
+                fontSize: 14,
+                color: "white",
               }}
             />
           </Form.Item>
           <Form.Item
             label={
-              <span style={{ color: "#fff", fontSize: 20 }}>Password</span>
+              <span style={{ color: "#fff", fontSize: 18 }}>Password</span>
             }
             name="password"
             rules={[{ required: true, message: "This field is required" }]}
           >
             <Input.Password
-              onChange={(value) => handleChange("password", value)}
-              value=""
+              iconRender={(visible) =>
+                visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />
+              }
+              onChange={(e) => handleChange("password", e.target.value)}
+              value={values.password}
+              placeholder="Enter Password"
               style={{
                 background: "#e39869",
                 border: "1px solid white",
                 height: 40,
-                fontSize: 16,
+                fontSize: 14,
+                color: "white",
               }}
             />
           </Form.Item>{" "}
@@ -89,13 +142,14 @@ function Login() {
             <Button
               htmlType="submit"
               type="primary"
+              loading={loading}
               style={{
                 background: "#e39869",
                 border: "1px solid white",
-                height: 45,
-                fontSize: 16,
+                height: 40,
+                fontSize: 14,
                 fontWeight: "bold",
-                width: "50%",
+                width: "55%",
               }}
             >
               Sign In
