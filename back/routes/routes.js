@@ -7,13 +7,15 @@ import {
   updateCookie,
 } from "../controllers/cookieController.js";
 
-import { Login, Register } from "../controllers/userController.js";
+import { Login, Register, Auth } from "../controllers/userController.js";
 import { deleteImage } from "../controllers/cloudinaryController.js";
+import { VerifyUser } from "../middleware/verifyUser.js";
 const router = express.Router();
 
 //user endpoints
 router.post("/login", Login);
 router.post("/register", Register);
+router.get("/verify", VerifyUser, Auth);
 
 //cookie endpoints
 router.post("/add-cookie", createCookie);
