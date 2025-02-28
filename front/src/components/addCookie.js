@@ -17,7 +17,14 @@ import { DeleteOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
 
 function AddCookie() {
-  const [values, setValues] = useState({ name: "" });
+  const [values, setValues] = useState({
+    name: "",
+    price: "",
+    stock: "",
+    category: "",
+    allergen: "",
+    description: "",
+  });
   const [imageUrls, setImageUrls] = useState([]);
   const [imagePublicIds, setImagePublicIds] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -109,14 +116,63 @@ function AddCookie() {
     setValues((prevValues) => ({ ...prevValues, [name]: value }));
   };
 
-  const handleSubmit = () => {
+  const deletePicture = (e, publicId) => {
+    e.preventDefault();
+    if (!publicId) {
+      return Swal.fire({
+        icon: "error",
+        title: "No image to delete!",
+        text: "You have not selected a valid image to delete",
+        confirmButtonText: "OK",
+      });
+    }
+    setLoading(true);
+
+    axios
+      .delete("delete-image", { data: { publicId } })
+      .then(() => {
+        setImageUrls((prevImages) =>
+          prevImages.filter((_, index) => imagePublicIds[index] !== publicId)
+        );
+        setImagePublicIds((prevIds) => prevIds.filter((id) => id !== publicId));
+        setLoading(false);
+        Swal.fire({ icon: "success", title: "Image removed!" });
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+        Swal.fire({
+          icon: "error",
+          title: "Failed to delete!",
+          text: "Refresh the page and try again",
+          confirmButtonText: "OK",
+        });
+      });
+  };
+
+  const handleSubmit = async () => {
     setLoading(true);
     try {
-      const cookieData = { ...values, img: imageUrls, imgId: imagePublicIds };
-      console.log(cookieData);
-      Swal.fire({ icon: "success", title: "Success", text: "Cookie added!" });
-      form.resetFields();
-      setValues({ name: "" });
+      const cookieData = {
+        ...values,
+        img: imageUrls,
+        imgId: imagePublicIds,
+        allergen: values.allergen.value,
+        category: values.category.value,
+      };
+      const res = await axios.post("add-cookie", cookieData);
+      if (res.data.success) {
+        Swal.fire({ icon: "success", title: "Success", text: "Cookie added!" });
+        form.resetFields();
+        setValues({
+          name: "",
+          price: "",
+          stock: "",
+          category: "",
+          allergen: "",
+          description: "",
+        });
+      }
     } catch (error) {
       Swal.fire({
         icon: "warning",
@@ -130,7 +186,14 @@ function AddCookie() {
 
   const handleClear = () => {
     form.resetFields();
-    setValues({ name: "" });
+    setValues({
+      name: "",
+      price: "",
+      stock: "",
+      category: "",
+      allergen: "",
+      description: "",
+    });
   };
 
   const cookieCategories = [
@@ -200,9 +263,9 @@ function AddCookie() {
                             type="text"
                             shape="circle"
                             icon={<DeleteOutlined />}
-                            // onClick={(e) =>
-                            //   deletePicture(e, imagePublicIds[index])
-                            // }
+                            onClick={(e) =>
+                              deletePicture(e, imagePublicIds[index])
+                            }
                             style={{
                               position: "absolute",
                               top: -10,

@@ -16,5 +16,5 @@ const cookieSchema = new mongoose.Schema(
   { collection: "cookies", timestamps: true }
 );
 
-const CookieModel = mongoose.Model("cookies", cookieSchema);
+const CookieModel = mongoose.model("cookies", cookieSchema);
 export default CookieModel;
