@@ -31,7 +31,7 @@ function Navbar() {
     { label: "Shop", icon: ShopOutlined, path: "/shop" },
     { label: "Reach Out", icon: PhoneOutlined, path: "/contact" },
     { label: "About us", icon: SmileOutlined, path: "/about-us" },
-    { label: "Add Cookie", icon: HeartOutlined, path: "/add-cookie" },
+    { label: "Login", icon: HeartOutlined, path: "/login" },
     { label: "FAQ", icon: QuestionCircleOutlined, path: "/faq" },
   ];
 

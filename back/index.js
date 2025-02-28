@@ -34,5 +34,5 @@ app.use((req, res, next) => {
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
-  console.log(`Connected on port:${PORT}`);
+  console.log(`Connected on port ${PORT}`);
 });
