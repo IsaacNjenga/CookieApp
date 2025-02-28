@@ -31,6 +31,7 @@ const Register = async (req, res) => {
 
 const Login = async (req, res) => {
   const { email, password } = req.body;
+
   try {
     // Find user by email
     const userExist = await UserModel.findOne({ email });

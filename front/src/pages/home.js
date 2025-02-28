@@ -1,13 +1,28 @@
-import React from "react";
-import { Badge, Button, Card, Divider, Image, Rate } from "antd";
+import React, { useContext, useEffect } from "react";
+import { Badge, Button, Card, Divider, Image, Rate, notification } from "antd";
 import { feedback, image, content } from "../assets/data/data";
 import "../assets/css/home.css";
-import { ShopOutlined } from "@ant-design/icons";
+import { ShopOutlined, SmileOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { UserContext } from "../App";
 
 function Home() {
+  const [api, contextHolder] = notification.useNotification();
+  const { user } = useContext(UserContext);
+  useEffect(() => {
+    if (localStorage.getItem("showLoginNotification") === "true") {
+      api.success({
+        message: `Welcome ${user.username}!`,
+        description: "Login Successful",
+        icon: <SmileOutlined style={{ color: "#108ee9" }} />,
+      });
+      localStorage.removeItem("showLoginNotification"); // Clear after showing
+    }
+  }, []);
+
   return (
     <>
+      {contextHolder}
       <Badge.Ribbon
         text="Freshness Guaranteed"
         color="#f8393b"

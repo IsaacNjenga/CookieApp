@@ -5,7 +5,9 @@ import Swal from "sweetalert2";
 import { EyeInvisibleOutlined, EyeTwoTone } from "@ant-design/icons";
 import axios from "axios";
 import { UserContext } from "../App";
+import { useNavigate } from "react-router-dom";
 function Login() {
+  const navigate = useNavigate();
   const [values, setValues] = useState({ email: "", password: "" });
   const [loading, setLoading] = useState(false);
   const { setUser } = useContext(UserContext);
@@ -34,7 +36,7 @@ function Login() {
         localStorage.setItem("token", token);
         setUser(user);
         localStorage.setItem("showLoginNotification", "true");
-        //navigate("/");
+        navigate("/");
       } else {
         Swal.fire({
           icon: "error",
