@@ -9,6 +9,7 @@ import {
   Rate,
   Drawer,
   Space,
+  Carousel,
 } from "antd";
 import React, { useContext } from "react";
 import Cart from "../pages/cart";
@@ -18,8 +19,13 @@ import { bestSellers, hotCookies, newCookies } from "../assets/data/data";
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
-  const { showDrawer, closeDrawer, openDrawer, setCartItems, setCartItem } =
-    useContext(UserContext);
+  const {
+    showDrawer,
+    closeDrawer,
+    openDrawer,
+    setCartmodalContents,
+    setCartmodalContent,
+  } = useContext(UserContext);
 
   const addToCart = (cookie) => {
     const allCookies = [...bestSellers, ...newCookies, ...hotCookies];
@@ -30,7 +36,7 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
       return;
     }
 
-    setCartItem((prevCart) => {
+    setCartmodalContent((prevCart) => {
       const updatedCart = [
         ...prevCart,
         {
@@ -46,13 +52,24 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
         },
       ];
 
-      setCartItems(updatedCart);
+      setCartmodalContents(updatedCart);
       return updatedCart;
     });
 
     showDrawer();
   };
 
+  //   <Image
+  //   src={modalContent.img}
+  //   alt={modalContent.title}
+  //   width="100%"
+  //   style={{
+  //     maxWidth: "300px",
+  //     borderRadius: "10px",
+  //     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+  //     objectFit: "contain",
+  //   }}
+  // />
   return (
     <Modal
       footer={null}
@@ -65,22 +82,45 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
       {modalContent && (
         <Row gutter={[20, 20]} align="middle">
           <Col xs={24} sm={24} md={10} lg={10} style={{ textAlign: "center" }}>
-            <Image
-              src={modalContent.img}
-              alt={modalContent.title}
-              width="100%"
-              style={{
-                maxWidth: "300px",
-                borderRadius: "10px",
-                boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-                objectFit: "contain",
-              }}
-            />
+            <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
+              {Array.isArray(modalContent.img) &&
+              modalContent.img.length > 0 ? (
+                modalContent.img.map((imgSrc, index) => (
+                  <div key={index}>
+                    <Image
+                      alt={`Slide ${index + 1}`}
+                      src={imgSrc}
+                      width="100%"
+                      height={350}
+                      style={{
+                        borderRadius: "10px",
+                        boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                        objectFit: "cover",
+                      }}
+                      className="card-image"
+                    />
+                  </div>
+                ))
+              ) : (
+                <Image
+                  alt={modalContent.name}
+                  src={modalContent.img}
+                  width="100%"
+                  height={350}
+                  style={{
+                    borderRadius: "10px",
+                    boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+                    objectFit: "cover",
+                  }}
+                  className="card-image"
+                />
+              )}
+            </Carousel>
           </Col>
 
           <Col xs={24} sm={24} md={14} lg={14}>
             <Title level={3} style={{ fontSize: "1.5rem" }}>
-              {modalContent.title}
+              {modalContent.name}
             </Title>
             <Rate allowHalf defaultValue={modalContent.rating} disabled />
             <Text type="secondary" style={{ display: "block", marginTop: 8 }}>

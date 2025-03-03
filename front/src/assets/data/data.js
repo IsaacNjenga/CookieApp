@@ -1,7 +1,7 @@
 export const bestSellers = [
   {
     _id: "7agf8a8f8g7d8fag8d787ga9",
-    title: "Chocolate Chip",
+    name: "Chocolate Chip",
     img: "https://images.pexels.com/photos/20558713/pexels-photo-20558713/free-photo-of-close-up-of-chocolate-chip-cookies-on-a-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "500",
     rating: 2.8,
@@ -12,7 +12,7 @@ export const bestSellers = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d787ga3",
-    title: "Oatmeal Raisin",
+    name: "Oatmeal Raisin",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
       "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
@@ -26,7 +26,7 @@ export const bestSellers = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d787ga1",
-    title: "Macadamia Nut",
+    name: "Macadamia Nut",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
     rating: 4.9,
@@ -37,7 +37,7 @@ export const bestSellers = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d787ga6",
-    title: "Matcha Green Tea",
+    name: "Matcha Green Tea",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
     rating: 3.8,
@@ -51,7 +51,7 @@ export const bestSellers = [
 export const newCookies = [
   {
     _id: "7agf8a8f8g7d8fag8d787gh8",
-    title: "Double Chocolate",
+    name: "Double Chocolate",
     img: "https://images.pexels.com/photos/28857430/pexels-photo-28857430/free-photo-of-stack-of-delicious-homemade-cookies-on-plate.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "700",
     rating: 4.7,
@@ -62,7 +62,7 @@ export const newCookies = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d787gn7",
-    title: "Peanut Butter Delight",
+    name: "Peanut Butter Delight",
     img: "https://images.pexels.com/photos/20558713/pexels-photo-20558713/free-photo-of-close-up-of-chocolate-chip-cookies-on-a-tray.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "550",
     rating: 4.6,
@@ -72,7 +72,7 @@ export const newCookies = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d787ha9",
-    title: "Snickerdoodle",
+    name: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
@@ -83,7 +83,7 @@ export const newCookies = [
   },
   {
     _id: "7agf8a8f5g7j8fag8d787ga9",
-    title: "Macadamia Nut",
+    name: "Macadamia Nut",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
       "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
@@ -100,7 +100,7 @@ export const newCookies = [
 export const hotCookies = [
   {
     _id: "7agf8a8f8g7d8fag8d787k89",
-    title: "Snickerdoodle",
+    name: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
@@ -111,7 +111,7 @@ export const hotCookies = [
   },
   {
     _id: "7agf8a8fik7d8fag8d787ga9",
-    title: "Matcha Green Tea",
+    name: "Matcha Green Tea",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
       "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
@@ -125,7 +125,7 @@ export const hotCookies = [
   },
   {
     _id: "7agf23458g7d8fag8d787ga9",
-    title: "Snickerdoodle",
+    name: "Snickerdoodle",
     img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
@@ -136,7 +136,7 @@ export const hotCookies = [
   },
   {
     _id: "7agf8a8f8g7d8fag8d7235a9",
-    title: "Matcha Green Tea",
+    name: "Matcha Green Tea",
     img: "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
     price: "650",
     rating: 4.8,
@@ -202,27 +202,27 @@ export const image = [
 
 export const content = [
   {
-    title: "Satisfaction Guaranteed",
+    name: "Satisfaction Guaranteed",
     text: "Our cookies are baked fresh daily, ensuring warm, gooey goodness straight from the oven to your doorstep.",
     divider: "Baked With Love, Just For You",
   },
   {
-    title: "Perfect for Any Occasion",
+    name: "Perfect for Any Occasion",
     text: "Whether it’s a birthday, a holiday, or a treat for yourself, our cookies make every moment sweeter.",
     divider: "Discover Your New Favourite Flavour",
   },
   {
-    title: "Quality Ingredients",
+    name: "Quality Ingredients",
     text: "We use only the finest, all-natural ingredients, ensuring a delicious experience in every bite.",
     divider: "Indulge In Every Bite",
   },
   {
-    title: "Homemade Goodness",
+    name: "Homemade Goodness",
     text: "Each cookie is crafted with love and care, just like Grandma used to make, bringing a taste of home to every treat.",
     divider: "Crafted Expertly",
   },
   {
-    title: "Gifts from the Heart",
+    name: "Gifts from the Heart",
     text: "Our beautifully packaged cookies make the perfect gift, spreading joy and sweetness with every box.",
     divider: "From Our Oven to Your Doorstep",
   },

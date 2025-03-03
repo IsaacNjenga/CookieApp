@@ -17,16 +17,20 @@ import CookieModal from "../components/cookieModal.js";
 import SearchComponent from "../components/search.js";
 import { UserContext } from "../App.js";
 import Cart from "./cart.js";
+import UpdateCookieModal from "../components/updateCookieModal.js";
+import useCookies from "../assets/hooks/cookieHook.js";
 
 function Shop() {
+  const { cookies, cookiesLoading, refreshKey } = useCookies();
   const [openModal, setOpenModal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
+  const [openEditModal, setOpenEditModal] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const { showDrawer, openDrawer, closeDrawer, setCartItems, setCartItem } =
     useContext(UserContext);
 
-  const allCookies = [...bestSellers, ...newCookies, ...hotCookies];
+  const allCookies = [...bestSellers, ...newCookies, ...hotCookies, ...cookies];
 
   const addToCart = (cookie) => {
     const selectedCookie = allCookies.find((c) => c._id === cookie._id);
@@ -41,10 +45,10 @@ function Shop() {
         ...prevCart,
         {
           _id: selectedCookie._id,
-          title: selectedCookie.title,
+          name: selectedCookie.name,
           category: selectedCookie.category,
           description: selectedCookie.description,
-          img: selectedCookie.img,
+          img: selectedCookie.img[0],
           price: selectedCookie.price,
           rating: selectedCookie.rating,
           stock: selectedCookie.stock,
@@ -61,6 +65,15 @@ function Shop() {
 
   const viewCookie = (item) => {
     setOpenModal(true);
+    setLoading(true);
+    setModalContent(item);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  const editCookie = (item) => {
+    setOpenEditModal(true);
     setLoading(true);
     setModalContent(item);
     setTimeout(() => {
@@ -128,7 +141,7 @@ function Shop() {
                           ))
                         ) : (
                           <Image
-                            alt={item.title}
+                            alt={item.name}
                             src={item.img}
                             width="100%"
                             height={350}
@@ -150,7 +163,7 @@ function Shop() {
                     disabled
                   />
                   <Card.Meta
-                    title={item.title}
+                    title={item.name}
                     description={`KES. ${item.price} | ${item.category}`}
                   />
                   <br />
@@ -179,6 +192,13 @@ function Shop() {
                     >
                       <Cart />
                     </Drawer>
+                    <Button
+                      type="primary"
+                      onClick={() => editCookie(item)}
+                      style={{ background: "#da8a4d" }}
+                    >
+                      Edit
+                    </Button>
                   </div>
                 </Card>
               </Col>
@@ -225,7 +245,7 @@ function Shop() {
                           ))
                         ) : (
                           <Image
-                            alt={item.title}
+                            alt={item.name}
                             src={item.img}
                             width="100%"
                             height={350}
@@ -247,7 +267,7 @@ function Shop() {
                     disabled
                   />
                   <Card.Meta
-                    title={item.title}
+                    title={item.name}
                     description={`KES. ${item.price} | ${item.category}`}
                   />
                   <br />
@@ -322,7 +342,7 @@ function Shop() {
                           ))
                         ) : (
                           <Image
-                            alt={item.title}
+                            alt={item.name}
                             src={item.img}
                             width="100%"
                             height={350}
@@ -344,7 +364,7 @@ function Shop() {
                     disabled
                   />
                   <Card.Meta
-                    title={item.title}
+                    title={item.name}
                     description={`KES. ${item.price} | ${item.category}`}
                   />
                   <br />
@@ -378,6 +398,104 @@ function Shop() {
               </Col>
             ))}
           </Row>
+          <Divider
+            variant="solid"
+            className="home-divider"
+            style={{ borderColor: "#e09b69" }}
+          >
+            From the DB
+          </Divider>
+          <Row gutter={[10, 10]} justify="center">
+            {cookies.map((item, index) => (
+              <Col key={index} xs={24} sm={12} md={8} lg={6}>
+                <Card
+                  hoverable
+                  cover={
+                    <Badge.Ribbon
+                      text={`${item.stock} available`}
+                      color="orange"
+                      style={{
+                        display: "block",
+                        right: "10px",
+                      }}
+                    >
+                      <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
+                        {Array.isArray(item.img) && item.img.length > 0 ? (
+                          item.img.map((imgSrc, index) => (
+                            <div key={index}>
+                              <Image
+                                alt={`Slide ${index + 1}`}
+                                src={imgSrc}
+                                width="100%"
+                                height={350}
+                                style={{
+                                  objectFit: "cover",
+                                }}
+                                className="card-image"
+                              />
+                            </div>
+                          ))
+                        ) : (
+                          <Image
+                            alt={item.name}
+                            src={item.img}
+                            width="100%"
+                            height={350}
+                            style={{
+                              objectFit: "cover",
+                            }}
+                            className="card-image"
+                          />
+                        )}
+                      </Carousel>
+                    </Badge.Ribbon>
+                  }
+                  className="cookie-card"
+                >
+                  <Rate
+                    allowHalf
+                    defaultValue={item.rating ? item.rating : "Not Yet Rated"}
+                    style={{ width: "100%" }}
+                    disabled
+                  />
+                  <Card.Meta
+                    title={item.name}
+                    description={`KES. ${item.price} | ${item.category}`}
+                  />
+                  <br />
+                  <div style={{ display: "flex", gap: "10px" }}>
+                    <Button type="primary" onClick={() => viewCookie(item)}>
+                      View
+                    </Button>
+                    <Button
+                      style={{ backgroundColor: "green" }}
+                      type="primary"
+                      onClick={() => addToCart(item)}
+                    >
+                      Add To Cart
+                    </Button>{" "}
+                    <Drawer
+                      title="Your Cart"
+                      width={window.innerWidth < 768 ? 350 : 600}
+                      onClose={closeDrawer}
+                      open={openDrawer}
+                      styles={{ body: { paddingBottom: 60 } }}
+                      extra={
+                        <Space>
+                          <Button onClick={closeDrawer}>Cancel</Button>
+                        </Space>
+                      }
+                    >
+                      <Cart />
+                    </Drawer>
+                    <Button type="primary" onClick={() => editCookie(item)}>
+                      Edit
+                    </Button>
+                  </div>
+                </Card>
+              </Col>
+            ))}
+          </Row>
         </div>
       )}
       <Divider
@@ -388,6 +506,12 @@ function Shop() {
       <CookieModal
         openModal={openModal}
         setOpenModal={setOpenModal}
+        modalContent={modalContent}
+        loading={loading}
+      />
+      <UpdateCookieModal
+        openEditModal={openEditModal}
+        setOpenEditModal={setOpenEditModal}
         modalContent={modalContent}
         loading={loading}
       />

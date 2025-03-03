@@ -73,7 +73,7 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                           ))
                         ) : (
                           <Image
-                            alt={item.title}
+                            alt={item.name}
                             src={item.img}
                             width="100%"
                             height={350}
@@ -94,7 +94,7 @@ function SearchComponent({ onSearchChange, dataSource, viewCookie }) {
                     style={{ width: "100%" }}
                   />
                   <Card.Meta
-                    title={item.title}
+                    title={item.name}
                     description={`KES. ${item.price} | ${item.category}`}
                   />
                   <br />
