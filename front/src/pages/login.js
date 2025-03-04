@@ -94,7 +94,7 @@ function Login() {
         </Divider>
         <Form layout="vertical" form={form} onFinish={handleSubmit}>
           <Form.Item
-            label={<span style={{ color: "#fff", fontSize: 18 }}>Email</span>}
+            label={<span style={{ color: "#fff", fontSize: 18 }}>Email Address</span>}
             name="email"
             rules={[{ required: true, message: "This field is required" }]}
           >

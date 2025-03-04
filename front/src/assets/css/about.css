@@ -1,0 +1,31 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('https://plus.unsplash.com/premium_photo-1668784197038-072eff0d0c12?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29va2llc3xlbnwwfHwwfHx8MA%3D%3D'); /* Replace with your background image URL */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+  }
+  
+  .about-card {
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+    text-align: left;
+    padding: 20px;
+    max-width: 800px; /* Limit the width of the card */
+  }
+  
+  .about-text {
+    font-size: 1.1rem;
+    margin: 15px 0;
+    color: #333;
+  }
+  
+  .shop-button {
+    margin-top: 20px;
+    font-size: 1rem;
+    padding: 10px 20px;
+  }

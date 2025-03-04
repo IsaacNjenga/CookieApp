@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { UserContext } from "../App";
 import {
   Button,
@@ -11,12 +11,14 @@ import {
 } from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import ClientInfo from "../components/clientInfo";
 
 const { Title, Text } = Typography;
 
 function Checkout() {
   const navigate = useNavigate();
   const { cartItems, setCartItems } = useContext(UserContext);
+  const [openPaymentModal, setOpenPaymentModal] = useState(null);
 
   useEffect(() => {
     if (cartItems.length === 0) {
@@ -51,7 +53,7 @@ function Checkout() {
       });
     }
 
-    console.log("checkout!");
+    setOpenPaymentModal(true);
   };
   return (
     <>
@@ -154,6 +156,11 @@ function Checkout() {
           </Button>
         </div>
       </Card>
+      <ClientInfo
+        openPaymentModal={openPaymentModal}
+        setOpenPaymentModal={setOpenPaymentModal}
+        cartItems={cartItems}
+      />
     </>
   );
 }

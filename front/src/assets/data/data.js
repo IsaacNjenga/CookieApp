@@ -15,7 +15,7 @@ export const bestSellers = [
     name: "Oatmeal Raisin",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     ],
     price: "400",
     rating: 3.5,
@@ -27,7 +27,7 @@ export const bestSellers = [
   {
     _id: "7agf8a8f8g7d8fag8d787ga1",
     name: "Macadamia Nut",
-    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "600",
     rating: 4.9,
     category: "Luxury",
@@ -73,7 +73,7 @@ export const newCookies = [
   {
     _id: "7agf8a8f8g7d8fag8d787ha9",
     name: "Snickerdoodle",
-    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
@@ -86,7 +86,7 @@ export const newCookies = [
     name: "Macadamia Nut",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     ],
     price: "600",
     rating: 4.9,
@@ -101,7 +101,7 @@ export const hotCookies = [
   {
     _id: "7agf8a8f8g7d8fag8d787k89",
     name: "Snickerdoodle",
-    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
@@ -114,7 +114,7 @@ export const hotCookies = [
     name: "Matcha Green Tea",
     img: [
       "https://images.pexels.com/photos/10311439/pexels-photo-10311439.jpeg?auto=compress&cs=tinysrgb&w=400",
-      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     ],
     price: "650",
     rating: 4.8,
@@ -126,7 +126,7 @@ export const hotCookies = [
   {
     _id: "7agf23458g7d8fag8d787ga9",
     name: "Snickerdoodle",
-    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
+    img: "https://images.unsplash.com/photo-1554175231-8367073ba4e3?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzh8fGNvb2tpZXN8ZW58MHx8MHx8fDA%3D",
     price: "500",
     rating: 4.7,
     category: "Cinnamon Bliss",
