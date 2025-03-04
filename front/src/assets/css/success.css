@@ -27,3 +27,51 @@
   font-size: 1rem;
   padding: 10px 20px;
 }
+
+.transaction-details {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.8
+  ); /* Slightly transparent background */
+}
+
+.details-title {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+}
+
+.detail-item {
+  font-size: 1rem;
+  margin: 10px 20px;
+  color: #555;
+  text-align: left;
+}
+
+.amount {
+  color: #4caf50;
+  font-weight: bold;
+}
+
+.status {
+  font-weight: bold;
+}
+
+.status-completed {
+  color: #4caf50; /* Green for completed */
+}
+
+.status-failed {
+  color: #f44336; /* Red for failed */
+}
+
+.transaction-date {
+  color: #555;
+}

@@ -35,7 +35,7 @@ const submitOrder = async (req, res) => {
         last_name: "",
       },
     };
-    console.log("Order Details:", orderDetails);
+    //console.log("Order Details:", orderDetails);
 
     const response = await axios.post(submission_url, orderDetails, {
       headers: {
@@ -76,7 +76,7 @@ const transactionStatus = async (req, res) => {
     });
 
     res.status(200).json(response.data);
-    console.log(response.data);
+    //console.log(response.data);
   } catch (error) {
     console.error("Error fetching transaction status:", error);
     res.status(500).send("Failed to fetch transaction status");

@@ -1,6 +1,8 @@
 import { Button, Card, Divider, Form, Input, Modal } from "antd";
 import React, { useState } from "react";
 import cookie_logo from "../assets/icons/cookie.png";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
   const [values, setValues] = useState({ email: "", phone: "", amount: "" });
@@ -16,13 +18,32 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
     0
   );
 
-  const handleSubmit = () => {
+  //OrderTrackingId=be7ae8b1-fab7-4c3f-8ad5-dc1683dbb09c&OrderMerchantReference=order-1741086819000
+
+  const handleSubmit = async () => {
     setLoading(true);
     try {
       const items = { ...values, amount: cartTotal };
       console.log(items);
+      await axios
+        .post("initiate-payment", {
+          email: items.email,
+          amount: items.amount,
+          phone: items.phone,
+        })
+        .then((res) => {
+          const { redirectUrl } = res.data;
+          Swal.fire({ icon: "success", title: "Request Successfull!" });
+          window.location.href = redirectUrl;
+        });
     } catch (error) {
       console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Payment failed",
+        text: "Kindly refresh and try again. Contact us if the issue persists",
+        confirmButtonText: "OK",
+      });
     } finally {
       setLoading(false);
     }
@@ -41,7 +62,7 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
           style={{
             maxWidth: 600,
             margin: "10px auto",
-            background:"whitesmoke",
+            background: "whitesmoke",
             padding: 0,
           }}
         >
@@ -71,7 +92,7 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
                 onChange={(e) => handleChange("email", e.target.value)}
                 value={values.email}
                 style={{
-                  background: "#e39869",
+                  background: "whitesmoke",
                   border: "1px solid grey",
                   height: 40,
                   fontSize: 14,
@@ -87,7 +108,7 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
                 onChange={(e) => handleChange("phone", e.target.value)}
                 value={values.phone}
                 style={{
-                  background: "#e39869",
+                  background: "whitesmoke",
                   border: "1px solid grey",
                   height: 40,
                   fontSize: 14,
