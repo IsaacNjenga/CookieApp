@@ -15,8 +15,14 @@ import Select from "react-select";
 import axios from "axios";
 import { DeleteOutlined } from "@ant-design/icons";
 import TextArea from "antd/es/input/TextArea";
+import { useNavigate } from "react-router-dom";
 
 function AddCookie() {
+  const navigate = useNavigate();
+  const [imageUrls, setImageUrls] = useState([]);
+  const [imagePublicIds, setImagePublicIds] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [imageUploading, setImageUploading] = useState(false);
   const [values, setValues] = useState({
     name: "",
     price: "",
@@ -25,10 +31,6 @@ function AddCookie() {
     allergen: "",
     description: "",
   });
-  const [imageUrls, setImageUrls] = useState([]);
-  const [imagePublicIds, setImagePublicIds] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const [imageUploading, setImageUploading] = useState(false);
   const [form] = Form.useForm();
 
   const handleImageUpload = (e) => {
@@ -163,6 +165,7 @@ function AddCookie() {
       const res = await axios.post("add-cookie", cookieData);
       if (res.data.success) {
         Swal.fire({ icon: "success", title: "Success", text: "Cookie added!" });
+        navigate("/shop");
         form.resetFields();
         setValues({
           name: "",
@@ -412,6 +415,7 @@ function AddCookie() {
                 htmlType="submit"
                 type="primary"
                 style={{ background: "purple" }}
+                loading={loading}
               >
                 Submit
               </Button>

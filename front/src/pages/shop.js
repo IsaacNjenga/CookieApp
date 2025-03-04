@@ -11,6 +11,8 @@ import {
   Badge,
   Drawer,
   Space,
+  Popconfirm,
+  message,
 } from "antd";
 import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
 import CookieModal from "../components/cookieModal.js";
@@ -19,6 +21,10 @@ import { UserContext } from "../App.js";
 import Cart from "./cart.js";
 import UpdateCookieModal from "../components/updateCookieModal.js";
 import useCookies from "../assets/hooks/cookieHook.js";
+import { DeleteOutlined } from "@ant-design/icons";
+import Swal from "sweetalert2";
+import axios from "axios";
+import SkeletonLoader from "../components/skeletonLoader.js";
 
 function Shop() {
   const { cookies, cookiesLoading, refreshKey } = useCookies();
@@ -27,6 +33,8 @@ function Shop() {
   const [modalContent, setModalContent] = useState(null);
   const [openEditModal, setOpenEditModal] = useState(null);
   const [searchValue, setSearchValue] = useState("");
+  const [openDelete, setOpenDelete] = useState(null);
+  const [confirmLoading, setConfirmLoading] = useState(false);
   const { showDrawer, openDrawer, closeDrawer, setCartItems, setCartItem } =
     useContext(UserContext);
 
@@ -79,6 +87,36 @@ function Shop() {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
+  };
+
+  const showDeleteConfirm = (item) => {
+    setOpenDelete(item._id);
+  };
+
+  const handleDelete = async (id) => {
+    setConfirmLoading(true);
+    try {
+      await axios.delete(`delete-cookie?id=${id}`);
+      Swal.fire({
+        icon: "success",
+        title: "Deleted",
+      });
+      refreshKey();
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "warning",
+        title: "Cookie could not be deleted",
+        text: "Refresh and try again",
+      });
+    } finally {
+      setConfirmLoading(false);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    message.error("Canceled");
+    setOpenDelete(null);
   };
 
   return (
@@ -192,6 +230,10 @@ function Shop() {
                     >
                       <Cart />
                     </Drawer>
+                  </div>{" "}
+                  <div
+                    style={{ display: "flex", gap: "10px", margin: "10px 0px" }}
+                  >
                     <Button
                       type="primary"
                       onClick={() => editCookie(item)}
@@ -199,6 +241,24 @@ function Shop() {
                     >
                       Edit
                     </Button>
+                    <Popconfirm
+                      title="Are you sure?"
+                      description="This action cannot be undone!"
+                      open={openDelete}
+                      onConfirm={() => handleDelete(item._id)}
+                      okButtonProps={{ loading: confirmLoading }}
+                      onCancel={handleDeleteCancel}
+                    >
+                      <Button
+                        type="primary"
+                        style={{ background: "red" }}
+                        danger
+                        title="Delete this cookie"
+                        onClick={() => showDeleteConfirm(item)}
+                      >
+                        <DeleteOutlined />
+                      </Button>
+                    </Popconfirm>
                   </div>
                 </Card>
               </Col>
@@ -405,97 +465,136 @@ function Shop() {
           >
             From the DB
           </Divider>
-          <Row gutter={[10, 10]} justify="center">
-            {cookies.map((item, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={6}>
-                <Card
-                  hoverable
-                  cover={
-                    <Badge.Ribbon
-                      text={`${item.stock} available`}
-                      color="orange"
+          {cookiesLoading ? (
+            <SkeletonLoader />
+          ) : (
+            <Row gutter={[10, 10]} justify="center">
+              {cookies.map((item, index) => (
+                <Col key={index} xs={24} sm={12} md={8} lg={6}>
+                  <Card
+                    hoverable
+                    cover={
+                      <Badge.Ribbon
+                        text={`${item.stock} available`}
+                        color="orange"
+                        style={{
+                          display: "block",
+                          right: "10px",
+                        }}
+                      >
+                        <Carousel
+                          autoplay
+                          autoplaySpeed={2500}
+                          fade
+                          dots={false}
+                        >
+                          {Array.isArray(item.img) && item.img.length > 0 ? (
+                            item.img.map((imgSrc, index) => (
+                              <div key={index}>
+                                <Image
+                                  alt={`Slide ${index + 1}`}
+                                  src={imgSrc}
+                                  width="100%"
+                                  height={350}
+                                  style={{
+                                    objectFit: "cover",
+                                  }}
+                                  className="card-image"
+                                />
+                              </div>
+                            ))
+                          ) : (
+                            <Image
+                              alt={item.name}
+                              src={item.img}
+                              width="100%"
+                              height={350}
+                              style={{
+                                objectFit: "cover",
+                              }}
+                              className="card-image"
+                            />
+                          )}
+                        </Carousel>
+                      </Badge.Ribbon>
+                    }
+                    className="cookie-card"
+                  >
+                    <Rate
+                      allowHalf
+                      defaultValue={item.rating ? item.rating : "Not Yet Rated"}
+                      style={{ width: "100%" }}
+                      disabled
+                    />
+                    <Card.Meta
+                      title={item.name}
+                      description={`KES. ${item.price} | ${item.category}`}
+                    />
+                    <br />
+                    <div style={{ display: "flex", gap: "10px" }}>
+                      <Button type="primary" onClick={() => viewCookie(item)}>
+                        View
+                      </Button>
+                      <Button
+                        style={{ backgroundColor: "green" }}
+                        type="primary"
+                        onClick={() => addToCart(item)}
+                      >
+                        Add To Cart
+                      </Button>{" "}
+                      <Drawer
+                        title="Your Cart"
+                        width={window.innerWidth < 768 ? 350 : 600}
+                        onClose={closeDrawer}
+                        open={openDrawer}
+                        styles={{ body: { paddingBottom: 60 } }}
+                        extra={
+                          <Space>
+                            <Button onClick={closeDrawer}>Cancel</Button>
+                          </Space>
+                        }
+                      >
+                        <Cart />
+                      </Drawer>
+                    </div>{" "}
+                    <div
                       style={{
-                        display: "block",
-                        right: "10px",
+                        display: "flex",
+                        gap: "10px",
+                        margin: "10px 0px",
                       }}
                     >
-                      <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
-                        {Array.isArray(item.img) && item.img.length > 0 ? (
-                          item.img.map((imgSrc, index) => (
-                            <div key={index}>
-                              <Image
-                                alt={`Slide ${index + 1}`}
-                                src={imgSrc}
-                                width="100%"
-                                height={350}
-                                style={{
-                                  objectFit: "cover",
-                                }}
-                                className="card-image"
-                              />
-                            </div>
-                          ))
-                        ) : (
-                          <Image
-                            alt={item.name}
-                            src={item.img}
-                            width="100%"
-                            height={350}
-                            style={{
-                              objectFit: "cover",
-                            }}
-                            className="card-image"
-                          />
-                        )}
-                      </Carousel>
-                    </Badge.Ribbon>
-                  }
-                  className="cookie-card"
-                >
-                  <Rate
-                    allowHalf
-                    defaultValue={item.rating ? item.rating : "Not Yet Rated"}
-                    style={{ width: "100%" }}
-                    disabled
-                  />
-                  <Card.Meta
-                    title={item.name}
-                    description={`KES. ${item.price} | ${item.category}`}
-                  />
-                  <br />
-                  <div style={{ display: "flex", gap: "10px" }}>
-                    <Button type="primary" onClick={() => viewCookie(item)}>
-                      View
-                    </Button>
-                    <Button
-                      style={{ backgroundColor: "green" }}
-                      type="primary"
-                      onClick={() => addToCart(item)}
-                    >
-                      Add To Cart
-                    </Button>{" "}
-                    <Drawer
-                      title="Your Cart"
-                      width={window.innerWidth < 768 ? 350 : 600}
-                      onClose={closeDrawer}
-                      open={openDrawer}
-                      styles={{ body: { paddingBottom: 60 } }}
-                      extra={
-                        <Space>
-                          <Button onClick={closeDrawer}>Cancel</Button>
-                        </Space>
-                      }
-                    >
-                      <Cart />
-                    </Drawer>
-                    <Button type="primary" onClick={() => editCookie(item)}>
-                      Edit
-                    </Button>
-                  </div>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+                      <Button
+                        type="primary"
+                        onClick={() => editCookie(item)}
+                        style={{ background: "#da8a4d" }}
+                      >
+                        Edit
+                      </Button>
+                      <Popconfirm
+                        title="Are you sure?"
+                        description="This action cannot be undone!"
+                        open={openDelete}
+                        onConfirm={() => handleDelete(item._id)}
+                        okButtonProps={{ loading: confirmLoading }}
+                        onCancel={handleDeleteCancel}
+                      >
+                        <Button
+                          type="primary"
+                          style={{ background: "red" }}
+                          danger
+                          title="Delete this cookie"
+                          onClick={() => showDeleteConfirm(item)}
+                        >
+                          <DeleteOutlined />
+                        </Button>
+                      </Popconfirm>
+                    </div>
+                  </Card>
+                </Col>
+              ))}
+            </Row>
+          )}
         </div>
       )}
       <Divider
