@@ -26,7 +26,7 @@ function Success() {
       console.log(error);
       Swal.fire({
         icon: "warning",
-        Title: "Unable to fetch your transaction status",
+        title: "Unable to fetch your transaction status",
         text: "Contact us if the issue persists",
       });
     } finally {
