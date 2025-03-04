@@ -16,7 +16,7 @@ function UpdateCookieModal({
         onCancel={() => setOpenEditModal(false)}
         confirmLoading={loading}
         width={1000}
-        style={{ maxWidth: "110vw" }}
+        style={{ maxWidth: "95vw" }}
       >
         <UpdateCookie
           modalContent={modalContent}

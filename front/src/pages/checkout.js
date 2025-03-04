@@ -1,6 +1,14 @@
 import React, { useContext, useEffect } from "react";
 import { UserContext } from "../App";
-import { Button, List, Typography, InputNumber, Image, Divider } from "antd";
+import {
+  Button,
+  List,
+  Typography,
+  InputNumber,
+  Image,
+  Divider,
+  Card,
+} from "antd";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -47,103 +55,105 @@ function Checkout() {
   };
   return (
     <>
-      <List
-        itemLayout="horizontal"
-        dataSource={cartItems}
-        renderItem={(item) => (
-          <List.Item
-            style={{ flexWrap: "wrap" }}
-            actions={[
-              <div>
-                <InputNumber
-                  min={1}
-                  value={item.quantity}
-                  onChange={(value) => updateCart(item, value)}
-                  style={{ width: "115px" }}
-                  suffix={item.quantity > 1 ? "batches" : "batch"}
-                />
-                ,
-                <Button
-                  danger
-                  onClick={() => removeFromCart(item._id)}
-                  style={{ fontSize: "0.9rem", padding: "5px 10px" }}
-                >
-                  Remove Item
-                </Button>
-                ,
-              </div>,
-            ]}
-          >
-            <List.Item.Meta
-              avatar={
-                <Image
-                  src={item.img}
-                  alt={item.title}
-                  width={100}
-                  height={100}
-                  style={{
-                    borderRadius: "8px",
-                    objectFit: "cover",
-                    maxWidth: "100%",
-                  }}
-                />
-              }
-              title={
-                <Text style={{ fontSize: "1rem", fontWeight: 500 }}>
-                  {item.title}
-                </Text>
-              }
-              description={
-                <Text strong style={{ fontSize: "0.9rem" }}>
-                  KES.{item.price} x {item.quantity} = KES.
-                  {item.price * item.quantity}
-                </Text>
-              }
-            />
-          </List.Item>
-        )}
-      />
-
-      <Divider />
-
-      <div style={{ textAlign: "right", marginBottom: 16 }}>
-        <Title level={4} style={{ fontSize: "1.3rem" }}>
-          Total: KES.
-          {cartItems.reduce(
-            (total, item) => total + item.price * item.quantity,
-            0
+      <Card title="Your order:">
+        <List
+          itemLayout="horizontal"
+          dataSource={cartItems}
+          renderItem={(item) => (
+            <List.Item
+              style={{ flexWrap: "wrap" }}
+              actions={[
+                <div>
+                  <InputNumber
+                    min={1}
+                    value={item.quantity}
+                    onChange={(value) => updateCart(item, value)}
+                    style={{ width: "115px" }}
+                    suffix={item.quantity > 1 ? "batches" : "batch"}
+                  />
+                  ,
+                  <Button
+                    danger
+                    onClick={() => removeFromCart(item._id)}
+                    style={{ fontSize: "0.9rem", padding: "5px 10px" }}
+                  >
+                    Remove Item
+                  </Button>
+                  ,
+                </div>,
+              ]}
+            >
+              <List.Item.Meta
+                avatar={
+                  <Image
+                    src={item.img}
+                    alt={item.name}
+                    width={100}
+                    height={100}
+                    style={{
+                      borderRadius: "8px",
+                      objectFit: "cover",
+                      maxWidth: "100%",
+                    }}
+                  />
+                }
+                title={
+                  <Text style={{ fontSize: "1rem", fontWeight: 500 }}>
+                    {item.name}
+                  </Text>
+                }
+                description={
+                  <Text strong style={{ fontSize: "0.9rem" }}>
+                    KES.{item.price} x {item.quantity} = KES.
+                    {item.price * item.quantity}
+                  </Text>
+                }
+              />
+            </List.Item>
           )}
-        </Title>
-      </div>
+        />
 
-      <div>
-        <Button
-          type="primary"
-          size="large"
-          style={{
-            fontSize: "1rem",
-            padding: "12px",
-            margin: "0px 10px",
-          }}
-        >
-          <Link to="/shop">{`${
-            cartItems.length > 0 ? "Add another item" : "Add an item"
-          }`}</Link>
-        </Button>
-        <Button
-          type="primary"
-          size="large"
-          style={{
-            fontSize: "1rem",
-            padding: "12px",
-            margin: "10px 10px",
-            background: "green",
-          }}
-          onClick={checkout}
-        >
-          Checkout
-        </Button>
-      </div>
+        <Divider />
+
+        <div style={{ textAlign: "right", marginBottom: 16 }}>
+          <Title level={4} style={{ fontSize: "1.3rem" }}>
+            Total: KES.
+            {cartItems.reduce(
+              (total, item) => total + item.price * item.quantity,
+              0
+            )}
+          </Title>
+        </div>
+
+        <div>
+          <Button
+            type="primary"
+            size="large"
+            style={{
+              fontSize: "1rem",
+              padding: "12px",
+              margin: "0px 10px",
+            }}
+          >
+            <Link to="/shop">{`${
+              cartItems.length > 0 ? "Add another item" : "Add an item"
+            }`}</Link>
+          </Button>
+          <Button
+            type="primary"
+            size="large"
+            style={{
+              fontSize: "1rem",
+              padding: "12px",
+              margin: "10px 10px",
+              background: "green",
+            }}
+            onClick={checkout}
+          >
+            Checkout
+          </Button>
+        </div>
+      </Card>
     </>
   );
 }

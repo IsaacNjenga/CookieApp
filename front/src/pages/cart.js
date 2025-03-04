@@ -68,7 +68,7 @@ function Cart() {
                   avatar={
                     <Image
                       src={item.img}
-                      alt={item.title}
+                      alt={item.name}
                       width={65}
                       height={65}
                       style={{
@@ -80,7 +80,7 @@ function Cart() {
                   }
                   title={
                     <Text style={{ fontSize: "1rem", fontWeight: 500 }}>
-                      {item.title}
+                      {item.name}
                     </Text>
                   }
                   description={

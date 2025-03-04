@@ -10,6 +10,11 @@ import {
 import { Login, Register, Auth } from "../controllers/userController.js";
 import { deleteImage } from "../controllers/cloudinaryController.js";
 import { VerifyUser } from "../middleware/verifyUser.js";
+import { accessToken } from "../middleware/paymentAccessToken.js";
+import {
+  submitOrder,
+  transactionStatus,
+} from "../controllers/paymentController.js";
 const router = express.Router();
 
 //user endpoints
@@ -26,5 +31,9 @@ router.delete("/delete-cookie", deleteCookie);
 
 //cloudinary endpoint
 router.delete("/delete-image", deleteImage);
+
+//payment endpoints
+router.post("/initiate-payment", accessToken, submitOrder);
+router.get("/transaction-status", accessToken, transactionStatus);
 
 export { router as Router };

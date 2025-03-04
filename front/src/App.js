@@ -12,10 +12,12 @@ import axios from "axios";
 import AddCookie from "./components/addCookie.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
+import Success from "./pages/success.js";
+import Cancel from "./pages/cancel.js";
 export const UserContext = createContext();
 
-//axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
-axios.defaults.baseURL = "https://cookie-app-back.vercel.app/UncleCookies";
+axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
+//axios.defaults.baseURL = "https://cookie-app-back.vercel.app/UncleCookies";
 axios.defaults.withCredentials = true;
 function App() {
   const [cartItems, setCartItems] = useState([]);
@@ -74,6 +76,8 @@ function App() {
               <Route path="/add-cookie" element={<AddCookie />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
+              <Route path="success" element={<Success />} />
+              <Route path="cancel" element={<Cancel />} />
             </Route>
           </Routes>
         </BrowserRouter>
