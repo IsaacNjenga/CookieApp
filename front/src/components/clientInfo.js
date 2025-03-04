@@ -33,7 +33,11 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
         })
         .then((res) => {
           const { redirectUrl } = res.data;
-          Swal.fire({ icon: "success", title: "Request Successfull!" });
+          Swal.fire({
+            icon: "success",
+            title: "Request Successfull!",
+            text: "Redirecting to payment...",
+          });
           window.location.href = redirectUrl;
         });
     } catch (error) {
