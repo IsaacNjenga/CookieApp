@@ -16,8 +16,8 @@ import Success from "./pages/success.js";
 import Cancel from "./pages/cancel.js";
 export const UserContext = createContext();
 
-axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
-//axios.defaults.baseURL = "https://cookie-app-back.vercel.app/UncleCookies";
+//axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
+axios.defaults.baseURL = "https://cookie-app-back.vercel.app/UncleCookies";
 axios.defaults.withCredentials = true;
 function App() {
   const [cartItems, setCartItems] = useState([]);
