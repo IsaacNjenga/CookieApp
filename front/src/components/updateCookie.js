@@ -171,7 +171,7 @@ function UpdateCookie({ modalContent, setOpenEditModal }) {
         Swal.fire({
           icon: "success",
           title: "Success",
-          text: "Cookie Updated Successfully!",
+          text: "Cookie updated successfully!",
         });
         setOpenEditModal(false);
         form.resetFields();
@@ -426,7 +426,7 @@ function UpdateCookie({ modalContent, setOpenEditModal }) {
                 loading={loading}
                 style={{ background: "purple" }}
               >
-                Submit
+                Update
               </Button>
               <Button
                 type="primary"
