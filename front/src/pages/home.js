@@ -9,6 +9,7 @@ import { UserContext } from "../App";
 function Home() {
   const [api, contextHolder] = notification.useNotification();
   const { user } = useContext(UserContext);
+
   useEffect(() => {
     if (localStorage.getItem("showLoginNotification") === "true") {
       api.success({
@@ -18,7 +19,7 @@ function Home() {
       });
       localStorage.removeItem("showLoginNotification"); // Clear after showing
     }
-  }, []);
+  }, [user]);
 
   return (
     <>

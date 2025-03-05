@@ -15,6 +15,12 @@ import {
   submitOrder,
   transactionStatus,
 } from "../controllers/paymentController.js";
+import {
+  createFeedback,
+  deleteFeedback,
+  getAllFeedbacks,
+  getFeedback,
+} from "../controllers/feedbackController.js";
 const router = express.Router();
 
 //user endpoints
@@ -35,5 +41,11 @@ router.delete("/delete-image", deleteImage);
 //payment endpoints
 router.post("/initiate-payment", accessToken, submitOrder);
 router.get("/transaction-status", accessToken, transactionStatus);
+
+//feedback endpoints
+router.post("/create-feedback", createFeedback);
+router.get("/get-all-feedbacks", getAllFeedbacks);
+router.get("/get-feedback", getFeedback);
+router.delete("/delete-feedback", deleteFeedback);
 
 export { router as Router };
