@@ -13,6 +13,7 @@ import {
   Space,
   Popconfirm,
   message,
+  Tag,
 } from "antd";
 import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
 import CookieModal from "../components/cookieModal.js";
@@ -60,6 +61,7 @@ function Shop() {
           price: selectedCookie.price,
           rating: selectedCookie.rating,
           stock: selectedCookie.stock,
+          allergen: selectedCookie.allergen,
           quantity: 1,
         },
       ];
@@ -203,12 +205,25 @@ function Shop() {
                     }
                     className="cookie-card"
                   >
-                    <Rate
-                      allowHalf
-                      defaultValue={item.rating ? item.rating : "Not Yet Rated"}
-                      style={{ width: "100%" }}
-                      disabled
-                    />
+                    {item.rating > 0 ? (
+                      <Rate
+                        allowHalf
+                        defaultValue={item.rating}
+                        style={{ width: "100%" }}
+                        disabled
+                      />
+                    ) : (
+                      <Tag
+                        style={{
+                          display: "inline-block",
+                          backgroundColor: "#f0f0f0",
+                          color: "grey",
+                          marginBottom: "3px",
+                        }}
+                      >
+                        Not Yet Rated
+                      </Tag>
+                    )}
                     <Card.Meta
                       title={item.name}
                       description={`KES. ${item.price} | ${item.category}`}

@@ -108,6 +108,9 @@ function Checkout() {
                   <Text strong style={{ fontSize: "0.9rem" }}>
                     KES.{item.price} x {item.quantity} = KES.
                     {item.price * item.quantity}
+                    <p style={{ color: "red", fontSize: "0.7rem" }}>
+                        Allergen: {item.allergen}
+                      </p>
                   </Text>
                 }
               />

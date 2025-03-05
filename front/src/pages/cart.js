@@ -69,8 +69,8 @@ function Cart() {
                     <Image
                       src={item.img}
                       alt={item.name}
-                      width={65}
-                      height={65}
+                      width={75}
+                      height={75}
                       style={{
                         borderRadius: "8px",
                         objectFit: "cover",
@@ -84,9 +84,12 @@ function Cart() {
                     </Text>
                   }
                   description={
-                    <Text strong style={{ fontSize: "0.9rem" }}>
+                    <Text strong style={{ fontSize: "0.8rem" }}>
                       KES.{item.price} x {item.quantity} = KES.
                       {item.price * item.quantity}
+                      <p style={{ color: "red", fontSize: "0.7rem" }}>
+                        Allergen: {item.allergen}
+                      </p>
                     </Text>
                   }
                 />

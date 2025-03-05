@@ -30,7 +30,7 @@ function SkeletonLoader() {
                 }
                 className="cookie-card"
               >
-                <Rate disabled value={4} style={{ width: "100%" }} />
+                <Rate disabled value={5} style={{ width: "100%" }} />
                 <Skeleton
                   active
                   paragraph={{ rows: 1, width: ["80%"] }}
