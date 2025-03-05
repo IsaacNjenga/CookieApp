@@ -10,6 +10,7 @@ import {
   Drawer,
   Space,
   Carousel,
+  Tag,
 } from "antd";
 import React, { useContext } from "react";
 import Cart from "../pages/cart";
@@ -59,17 +60,6 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
     showDrawer();
   };
 
-  //   <Image
-  //   src={modalContent.img}
-  //   alt={modalContent.title}
-  //   width="100%"
-  //   style={{
-  //     maxWidth: "300px",
-  //     borderRadius: "10px",
-  //     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
-  //     objectFit: "contain",
-  //   }}
-  // />
   return (
     <Modal
       footer={null}
@@ -121,20 +111,35 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
           <Col xs={24} sm={24} md={14} lg={14}>
             <Title level={3} style={{ fontSize: "1.5rem" }}>
               {modalContent.name}
-            </Title>
-            <Rate allowHalf defaultValue={modalContent.rating} disabled />
+            </Title>{" "}
+            {modalContent.rating > 0 ? (
+              <Rate
+                allowHalf
+                defaultValue={modalContent.rating}
+                style={{ width: "100%" }}
+                disabled
+              />
+            ) : (
+              <Tag
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "#f0f0f0",
+                  color: "grey",
+                  marginBottom: "3px",
+                }}
+              >
+                Not Yet Rated
+              </Tag>
+            )}
             <Text type="secondary" style={{ display: "block", marginTop: 8 }}>
               {modalContent.category}
             </Text>
-
             <Divider />
             <Text>{modalContent.description}</Text>
             <Divider />
-
             <Title level={4} style={{ color: "#4bbe11" }}>
               KES.{modalContent.price}
             </Title>
-
             <Button
               type="primary"
               size="large"
@@ -148,7 +153,6 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
             >
               Add to Cart
             </Button>
-
             <Drawer
               title="Your Cart"
               width={window.innerWidth < 768 ? 350 : 600} // Adjust width based on screen size
