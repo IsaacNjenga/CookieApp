@@ -206,7 +206,7 @@ function Contact() {
             </Form.Item>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button type="primary" htmlType="submit" loading={loading}>
-                Send Message
+                {loading ? "Sending Message..." : "Send Message"}
               </Button>
               <Button
                 type="primary"
