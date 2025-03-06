@@ -4,11 +4,15 @@ import useCookies from "../assets/hooks/cookieHook";
 import CookieModal from "../components/cookieModal";
 import SearchComponentList from "../components/searchComponentList";
 import RateModal from "../components/rateModal";
+import useReviews from "../assets/hooks/reviewsHook";
+import ReviewsModal from "../components/reviewsModal";
 
 const { Text } = Typography;
 function Review() {
   const { cookies, cookiesLoading, refreshKey } = useCookies();
+  const { reviews, reviewsLoading, reviewsRefreshKey } = useReviews();
   const [openModal, setOpenModal] = useState(null);
+  const [openReviewModal, setOpenReviewModal] = useState(null);
   const [openRateModal, setOpenRateModal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
@@ -25,6 +29,15 @@ function Review() {
 
   const rateCookie = (item) => {
     setOpenRateModal(true);
+    setLoading(true);
+    setModalContent(item);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  const viewReviews = (item) => {
+    setOpenReviewModal(true);
     setLoading(true);
     setModalContent(item);
     setTimeout(() => {
@@ -56,6 +69,18 @@ function Review() {
                       onClick={() => viewCookie(item)}
                     >
                       View
+                    </Button>
+
+                    <Button
+                      type="primary"
+                      key="more"
+                      style={{
+                        backgroundColor: "yellow",
+                        color: "black",
+                      }}
+                      onClick={() => viewReviews(item)}
+                    >
+                      <strong>Reviews</strong>
                     </Button>
 
                     <Button
@@ -148,6 +173,14 @@ function Review() {
         modalContent={modalContent}
         loading={loading}
         refreshKey={refreshKey}
+      />
+      <ReviewsModal
+        openReviewModal={openReviewModal}
+        setOpenReviewModal={setOpenReviewModal}
+        modalContent={modalContent}
+        reviews={reviews}
+        reviewsLoading={reviewsLoading}
+        reviewsRefreshKey={reviewsRefreshKey}
       />
     </>
   );

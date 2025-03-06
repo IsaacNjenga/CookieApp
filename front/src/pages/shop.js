@@ -160,7 +160,7 @@ function Shop() {
                     hoverable
                     cover={
                       <Badge.Ribbon
-                        text={`${item.stock} available`}
+                        text={`${item.category}`}
                         color="orange"
                         style={{
                           display: "block",
@@ -237,7 +237,9 @@ function Shop() {
                     )}
                     <Card.Meta
                       title={item.name}
-                      description={`KES. ${item.price} | ${item.category}`}
+                      description={`KES. ${item.price} | ${
+                        item.allergen ? `Contains ${item.allergen}` : null
+                      }`}
                     />
                     <br />
                     <div style={{ display: "flex", gap: "10px" }}>
