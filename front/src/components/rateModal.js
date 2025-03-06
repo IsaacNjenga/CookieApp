@@ -5,7 +5,12 @@ import Swal from "sweetalert2";
 
 const { TextArea } = Input;
 
-function RateModal({ openRateModal, setOpenRateModal, modalContent }) {
+function RateModal({
+  openRateModal,
+  setOpenRateModal,
+  modalContent,
+  refreshKey,
+}) {
   const [loading, setLoading] = useState(false);
   const [values, setValues] = useState({ rating: 0, review: "" });
   const [form] = Form.useForm();
@@ -25,11 +30,12 @@ function RateModal({ openRateModal, setOpenRateModal, modalContent }) {
       if (res.data.success) {
         Swal.fire({
           icon: "success",
-          title: "Rating successful",
+          title: "Review successful",
           text: "We really appreciate your feedback.",
         });
         form.resetFields();
         setOpenRateModal(false);
+        refreshKey();
       }
     } catch (error) {
       console.log(error);
@@ -46,6 +52,9 @@ function RateModal({ openRateModal, setOpenRateModal, modalContent }) {
   const closeRateModal = () => {
     setOpenRateModal(false);
   };
+
+  const desc = ["Terrible", "Bad", "Good", "Nice!", "Amazing!"];
+
   return (
     <Modal
       footer={null}
@@ -69,8 +78,10 @@ function RateModal({ openRateModal, setOpenRateModal, modalContent }) {
           rules={[{ required: true, message: "Please rate!" }]}
         >
           <Rate
+            tooltips={desc}
             onChange={(value) => handleChange("rating", value)}
             value={values.rating}
+            style={{ fontSize: "25px" }}
           />
         </Form.Item>
 

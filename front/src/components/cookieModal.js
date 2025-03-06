@@ -113,12 +113,23 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
               {modalContent.name}
             </Title>{" "}
             {modalContent.rating > 0 ? (
-              <Rate
-                allowHalf
-                defaultValue={modalContent.rating}
-                style={{ width: "100%" }}
-                disabled
-              />
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <Rate
+                  allowHalf
+                  defaultValue={modalContent.rating}
+                  style={{ flex: "0 0 auto" }}
+                  disabled
+                />
+                <span
+                  style={{
+                    marginLeft: "8px",
+                    fontSize: "14px",
+                    color: "#666",
+                  }}
+                >
+                  ({modalContent.totalReviews ? modalContent.totalReviews : 3})
+                </span>
+              </div>
             ) : (
               <Tag
                 style={{

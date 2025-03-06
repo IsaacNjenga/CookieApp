@@ -206,12 +206,23 @@ function Shop() {
                     className="cookie-card"
                   >
                     {item.rating > 0 ? (
-                      <Rate
-                        allowHalf
-                        defaultValue={item.rating}
-                        style={{ width: "100%" }}
-                        disabled
-                      />
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Rate
+                          allowHalf
+                          defaultValue={item.rating}
+                          style={{ flex: "0 0 auto" }}
+                          disabled
+                        />
+                        <span
+                          style={{
+                            marginLeft: "8px",
+                            fontSize: "14px",
+                            color: "#666",
+                          }}
+                        >
+                          ({item.totalReviews ? item.totalReviews : 3})
+                        </span>
+                      </div>
                     ) : (
                       <Tag
                         style={{

@@ -11,6 +11,7 @@ const cookieSchema = new mongoose.Schema(
     ingredients: { type: String },
     allergen: { type: String },
     section: { type: String },
+    totalReviews: { type: Number },
     rating: { type: Number },
   },
   { collection: "cookies", timestamps: true }

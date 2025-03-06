@@ -1,4 +1,5 @@
 import CookieModel from "../models/Cookie.js";
+import ReviewsModel from "../models/Reviews.js";
 
 const createCookie = async (req, res) => {
   try {
@@ -14,7 +15,15 @@ const createCookie = async (req, res) => {
 
 const getCookies = async (req, res) => {
   try {
-    const cookies = await CookieModel.find({});
+    const allCookies = await CookieModel.find();
+    const cookies = await Promise.all(
+      allCookies.map(async (cookie) => {
+        const totalReviews = await ReviewsModel.countDocuments({
+          cookieId: cookie._id,
+        });
+        return { ...cookie.toObject(), totalReviews };
+      })
+    );
     res.status(201).json({ success: true, cookies });
   } catch (error) {
     console.log(error);

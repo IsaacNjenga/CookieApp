@@ -7,7 +7,7 @@ import RateModal from "../components/rateModal";
 
 const { Text } = Typography;
 function Review() {
-  const { cookies, cookiesLoading } = useCookies();
+  const { cookies, cookiesLoading, refreshKey } = useCookies();
   const [openModal, setOpenModal] = useState(null);
   const [openRateModal, setOpenRateModal] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ function Review() {
               <List.Item
                 style={{ flexWrap: "wrap" }}
                 actions={[
-                  <div>
+                  <div style={{ display: "flex", gap: "15px" }}>
                     <Button
                       type="primary"
                       key="more"
@@ -57,7 +57,7 @@ function Review() {
                     >
                       View
                     </Button>
-                    ,
+
                     <Button
                       type="primary"
                       key="edit"
@@ -66,7 +66,6 @@ function Review() {
                     >
                       Rate
                     </Button>
-                    ,
                   </div>,
                 ]}
               >
@@ -100,12 +99,23 @@ function Review() {
                         {item.description}
                       </p>{" "}
                       {item.rating > 0 ? (
-                        <Rate
-                          allowHalf
-                          defaultValue={item.rating}
-                          style={{ width: "100%" }}
-                          disabled
-                        />
+                        <div style={{ display: "flex", alignItems: "center" }}>
+                          <Rate
+                            allowHalf
+                            defaultValue={item.rating}
+                            style={{ flex: "0 0 auto" }}
+                            disabled
+                          />
+                          <span
+                            style={{
+                              marginLeft: "8px",
+                              fontSize: "14px",
+                              color: "#666",
+                            }}
+                          >
+                            ({item.totalReviews ? item.totalReviews : 3})
+                          </span>
+                        </div>
                       ) : (
                         <Tag
                           style={{
@@ -137,6 +147,7 @@ function Review() {
         setOpenRateModal={setOpenRateModal}
         modalContent={modalContent}
         loading={loading}
+        refreshKey={refreshKey}
       />
     </>
   );
