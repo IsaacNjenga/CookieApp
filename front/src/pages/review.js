@@ -52,6 +52,8 @@ function Review() {
         onSearchChange={(value) => setSearchValue(value)}
         dataSource={cookies}
         viewCookie={viewCookie}
+        rateCookie={rateCookie}
+        viewReviews={viewReviews}
       />
       {searchValue === "" && (
         <Card title="🌟 Loved it? Let us know! 🌟">

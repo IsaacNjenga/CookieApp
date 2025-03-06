@@ -1,8 +1,15 @@
+import { EyeOutlined } from "@ant-design/icons";
 import { Button, Image, Input, List, Rate, Tag, Typography } from "antd";
 import React, { useState } from "react";
 const { Search } = Input;
 const { Text } = Typography;
-function SearchComponentList({ onSearchChange, dataSource, viewCookie }) {
+function SearchComponentList({
+  onSearchChange,
+  dataSource,
+  viewCookie,
+  viewReviews,
+  rateCookie,
+}) {
   const [search, setSearch] = useState("");
 
   const handleSearchChange = (e) => {
@@ -35,23 +42,36 @@ function SearchComponentList({ onSearchChange, dataSource, viewCookie }) {
             <List.Item
               style={{ flexWrap: "wrap" }}
               actions={[
-                <div>
+                <div style={{ display: "flex", gap: "15px" }}>
                   <Button
                     type="primary"
-                    key="more"
+                    key="view"
+                    title="View"
                     onClick={() => viewCookie(item)}
                   >
-                    View
+                    <EyeOutlined />
                   </Button>
-                  ,
+
                   <Button
                     type="primary"
-                    key="edit"
+                    key="reviews"
+                    style={{
+                      backgroundColor: "yellow",
+                      color: "black",
+                    }}
+                    onClick={() => viewReviews(item)}
+                  >
+                    <strong>Reviews</strong>
+                  </Button>
+
+                  <Button
+                    type="primary"
+                    key="rate"
                     style={{ backgroundColor: "green" }}
+                    onClick={() => rateCookie(item)}
                   >
                     Rate
                   </Button>
-                  ,
                 </div>,
               ]}
             >
@@ -85,12 +105,23 @@ function SearchComponentList({ onSearchChange, dataSource, viewCookie }) {
                       {item.description}
                     </p>{" "}
                     {item.rating > 0 ? (
-                      <Rate
-                        allowHalf
-                        defaultValue={item.rating}
-                        style={{ width: "100%" }}
-                        disabled
-                      />
+                      <div style={{ display: "flex", alignItems: "center" }}>
+                        <Rate
+                          allowHalf
+                          defaultValue={item.rating}
+                          style={{ flex: "0 0 auto" }}
+                          disabled
+                        />
+                        <span
+                          style={{
+                            marginLeft: "8px",
+                            fontSize: "14px",
+                            color: "#666",
+                          }}
+                        >
+                          ({item.totalReviews ? item.totalReviews : 3})
+                        </span>
+                      </div>
                     ) : (
                       <Tag
                         style={{
