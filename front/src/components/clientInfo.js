@@ -18,8 +18,6 @@ function ClientInfo({ cartItems, openPaymentModal, setOpenPaymentModal }) {
     0
   );
 
-  //OrderTrackingId=be7ae8b1-fab7-4c3f-8ad5-dc1683dbb09c&OrderMerchantReference=order-1741086819000
-
   const handleSubmit = async () => {
     setLoading(true);
     try {

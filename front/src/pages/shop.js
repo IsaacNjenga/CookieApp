@@ -15,7 +15,6 @@ import {
   message,
   Tag,
 } from "antd";
-import { bestSellers, hotCookies, newCookies } from "../assets/data/data.js";
 import CookieModal from "../components/cookieModal.js";
 import SearchComponent from "../components/search.js";
 import { UserContext } from "../App.js";
@@ -39,7 +38,7 @@ function Shop() {
   const { showDrawer, openDrawer, closeDrawer, setCartItems, setCartItem } =
     useContext(UserContext);
 
-  const allCookies = [...bestSellers, ...newCookies, ...hotCookies, ...cookies];
+  const allCookies = [...cookies];
 
   const addToCart = (cookie) => {
     const selectedCookie = allCookies.find((c) => c._id === cookie._id);
@@ -62,6 +61,7 @@ function Shop() {
           rating: selectedCookie.rating,
           stock: selectedCookie.stock,
           allergen: selectedCookie.allergen,
+          totalReviews: selectedCookie.totalReviews,
           quantity: 1,
         },
       ];
@@ -267,7 +267,7 @@ function Shop() {
                       >
                         <Cart />
                       </Drawer>
-                    </div>{" "}
+                    </div>
                     <div
                       style={{
                         display: "flex",
@@ -306,207 +306,22 @@ function Shop() {
               ))}
             </Row>
           )}
-          <Divider
+          {/* <Divider
             variant="solid"
             className="home-divider"
             style={{ borderColor: "#e09b69" }}
           >
             Made for the best😉, by the best✨
           </Divider>
-          {/* New & Upcoming */}
-          <h2 className="section-title">New & Upcoming</h2>
-          <Row gutter={[10, 10]} justify="center">
-            {newCookies.map((item, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={6}>
-                <Card
-                  hoverable
-                  cover={
-                    <Badge.Ribbon
-                      text={`${item.stock} available`}
-                      color="orange"
-                      style={{
-                        display: "block",
-                        right: "10px",
-                      }}
-                    >
-                      <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
-                        {Array.isArray(item.img) && item.img.length > 0 ? (
-                          item.img.map((imgSrc, index) => (
-                            <div key={index}>
-                              <Image
-                                alt={`Slide ${index + 1}`}
-                                src={imgSrc}
-                                width="100%"
-                                height={350}
-                                style={{
-                                  objectFit: "cover",
-                                }}
-                                className="card-image"
-                              />
-                            </div>
-                          ))
-                        ) : (
-                          <Image
-                            alt={item.name}
-                            src={item.img}
-                            width="100%"
-                            height={350}
-                            style={{
-                              objectFit: "cover",
-                            }}
-                            className="card-image"
-                          />
-                        )}
-                      </Carousel>
-                    </Badge.Ribbon>
-                  }
-                  className="cookie-card"
-                >
-                  <Rate
-                    allowHalf
-                    defaultValue={item.rating}
-                    style={{ width: "100%" }}
-                    disabled
-                  />
-                  <Card.Meta
-                    title={item.name}
-                    description={`KES. ${item.price} | ${item.category}`}
-                  />
-                  <br />
-                  <div style={{ display: "flex", gap: "10px" }}>
-                    <Button type="primary" onClick={() => viewCookie(item)}>
-                      View
-                    </Button>
-                    <Button
-                      style={{ backgroundColor: "green" }}
-                      type="primary"
-                      onClick={() => addToCart(item)}
-                    >
-                      Add To Cart
-                    </Button>{" "}
-                    <Drawer
-                      title="Your Cart"
-                      width={window.innerWidth < 768 ? 350 : 600}
-                      onClose={closeDrawer}
-                      open={openDrawer}
-                      styles={{ body: { paddingBottom: 60 } }}
-                      extra={
-                        <Space>
-                          <Button onClick={closeDrawer}>Cancel</Button>
-                        </Space>
-                      }
-                    >
-                      <Cart />
-                    </Drawer>
-                  </div>
-                </Card>
-              </Col>
-            ))}
-          </Row>
           <Divider
             variant="solid"
             className="home-divider"
             style={{ borderColor: "#e09b69" }}
           >
             Tap into greatness! 🙌
-          </Divider>
-          {/* Hot & Fresh */}
-          <h2 className="section-title">Hot & Fresh</h2>
-          <Row gutter={[10, 10]} justify="center">
-            {hotCookies.map((item, index) => (
-              <Col key={index} xs={24} sm={12} md={8} lg={6}>
-                <Card
-                  hoverable
-                  cover={
-                    <Badge.Ribbon
-                      text={`${item.stock} available`}
-                      color="orange"
-                      style={{
-                        display: "block",
-                        right: "10px",
-                      }}
-                    >
-                      <Carousel autoplay autoplaySpeed={2500} fade dots={false}>
-                        {Array.isArray(item.img) && item.img.length > 0 ? (
-                          item.img.map((imgSrc, index) => (
-                            <div key={index}>
-                              <Image
-                                alt={`Slide ${index + 1}`}
-                                src={imgSrc}
-                                width="100%"
-                                height={350}
-                                style={{
-                                  objectFit: "cover",
-                                }}
-                                className="card-image"
-                              />
-                            </div>
-                          ))
-                        ) : (
-                          <Image
-                            alt={item.name}
-                            src={item.img}
-                            width="100%"
-                            height={350}
-                            style={{
-                              objectFit: "cover",
-                            }}
-                            className="card-image"
-                          />
-                        )}
-                      </Carousel>
-                    </Badge.Ribbon>
-                  }
-                  className="cookie-card"
-                >
-                  <Rate
-                    allowHalf
-                    defaultValue={item.rating}
-                    style={{ width: "100%" }}
-                    disabled
-                  />
-                  <Card.Meta
-                    title={item.name}
-                    description={`KES. ${item.price} | ${item.category}`}
-                  />
-                  <br />
-                  <div style={{ display: "flex", gap: "10px" }}>
-                    <Button type="primary" onClick={() => viewCookie(item)}>
-                      View
-                    </Button>
-                    <Button
-                      style={{ backgroundColor: "green" }}
-                      type="primary"
-                      onClick={() => addToCart(item)}
-                    >
-                      Add To Cart
-                    </Button>{" "}
-                    <Drawer
-                      title="Your Cart"
-                      width={window.innerWidth < 768 ? 350 : 600}
-                      onClose={closeDrawer}
-                      open={openDrawer}
-                      styles={{ body: { paddingBottom: 60 } }}
-                      extra={
-                        <Space>
-                          <Button onClick={closeDrawer}>Cancel</Button>
-                        </Space>
-                      }
-                    >
-                      <Cart />
-                    </Drawer>
-                  </div>
-                </Card>
-              </Col>
-            ))}
-          </Row>
+          </Divider> */}
         </div>
       )}
-      <Divider
-        variant="solid"
-        className="home-divider"
-        style={{ borderColor: "#e09b69" }}
-      ></Divider>
       <CookieModal
         openModal={openModal}
         setOpenModal={setOpenModal}

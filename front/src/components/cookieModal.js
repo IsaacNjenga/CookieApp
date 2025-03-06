@@ -15,21 +15,17 @@ import {
 import React, { useContext } from "react";
 import Cart from "../pages/cart";
 import { UserContext } from "../App";
-import { bestSellers, hotCookies, newCookies } from "../assets/data/data";
+import useCookies from "../assets/hooks/cookieHook";
 
 const { Title, Text } = Typography;
 
 function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
-  const {
-    showDrawer,
-    closeDrawer,
-    openDrawer,
-    setCartmodalContents,
-    setCartmodalContent,
-  } = useContext(UserContext);
+  const { showDrawer, closeDrawer, openDrawer, setCartItems, setCartItem } =
+    useContext(UserContext);
+  const { cookies } = useCookies();
 
   const addToCart = (cookie) => {
-    const allCookies = [...bestSellers, ...newCookies, ...hotCookies];
+    const allCookies = [...cookies];
     const selectedCookie = allCookies.find((c) => c._id === cookie._id);
 
     if (!selectedCookie) {
@@ -37,23 +33,25 @@ function CookieModal({ openModal, setOpenModal, modalContent, loading }) {
       return;
     }
 
-    setCartmodalContent((prevCart) => {
+    setCartItem((prevCart) => {
       const updatedCart = [
         ...prevCart,
         {
           _id: selectedCookie._id,
-          title: selectedCookie.title,
+          name: selectedCookie.name,
           category: selectedCookie.category,
           description: selectedCookie.description,
-          img: selectedCookie.img,
+          img: selectedCookie.img[0],
           price: selectedCookie.price,
           rating: selectedCookie.rating,
           stock: selectedCookie.stock,
+          allergen: selectedCookie.allergen,
+          totalReviews: selectedCookie.totalReviews,
           quantity: 1,
         },
       ];
 
-      setCartmodalContents(updatedCart);
+      setCartItems(updatedCart);
       return updatedCart;
     });
 

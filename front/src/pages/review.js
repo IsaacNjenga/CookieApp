@@ -6,6 +6,7 @@ import SearchComponentList from "../components/searchComponentList";
 import RateModal from "../components/rateModal";
 import useReviews from "../assets/hooks/reviewsHook";
 import ReviewsModal from "../components/reviewsModal";
+import { EyeOutlined } from "@ant-design/icons";
 
 const { Text } = Typography;
 function Review() {
@@ -65,15 +66,16 @@ function Review() {
                   <div style={{ display: "flex", gap: "15px" }}>
                     <Button
                       type="primary"
-                      key="more"
+                      key="view"
+                      title="View"
                       onClick={() => viewCookie(item)}
                     >
-                      View
+                      <EyeOutlined />
                     </Button>
 
                     <Button
                       type="primary"
-                      key="more"
+                      key="reviews"
                       style={{
                         backgroundColor: "yellow",
                         color: "black",
@@ -85,7 +87,7 @@ function Review() {
 
                     <Button
                       type="primary"
-                      key="edit"
+                      key="rate"
                       style={{ backgroundColor: "green" }}
                       onClick={() => rateCookie(item)}
                     >
