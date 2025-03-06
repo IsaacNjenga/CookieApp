@@ -21,6 +21,11 @@ import {
   getAllFeedbacks,
   getFeedback,
 } from "../controllers/feedbackController.js";
+import {deleteReview, 
+  createReview,
+  getAllReviews,
+  getReview,
+} from "../controllers/reviewController.js";
 const router = express.Router();
 
 //user endpoints
@@ -48,4 +53,9 @@ router.get("/get-all-feedbacks", getAllFeedbacks);
 router.get("/get-feedback", getFeedback);
 router.delete("/delete-feedback", deleteFeedback);
 
+//reviews & rating endpoints
+router.post("/create-review", createReview);
+router.get("/get-all-reviews", getAllReviews);
+router.get("/get-review", getReview);
+router.delete("/delete-review", deleteReview);
 export { router as Router };
