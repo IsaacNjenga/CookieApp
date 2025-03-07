@@ -10,6 +10,7 @@ import {
   ShoppingCartOutlined,
   QuestionCircleOutlined,
   StarOutlined,
+  UserOutlined,
 } from "@ant-design/icons";
 import cookie_logo from "../assets/icons/cookie.png";
 import FooterContent from "./footer";
@@ -31,7 +32,7 @@ function Navbar() {
     { label: "Shop", icon: ShopOutlined, path: "/shop" },
     { label: "Rate a Cookie", icon: StarOutlined, path: "/review" },
     { label: "Reach Out", icon: PhoneOutlined, path: "/contact" },
-    //{ label: "Dashboard", icon: UserOutlined, path: "/dashboard" },
+    { label: "Dashboard", icon: UserOutlined, path: "/dashboard" },
     { label: "About us", icon: SmileOutlined, path: "/about-us" },
     { label: "FAQ", icon: QuestionCircleOutlined, path: "/faq" },
   ];
