@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Layout, Menu, Drawer, Button, FloatButton, Space, Badge } from "antd";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import {
-  HeartOutlined,
   HomeOutlined,
   PhoneOutlined,
   ShopOutlined,
@@ -32,6 +31,7 @@ function Navbar() {
     { label: "Shop", icon: ShopOutlined, path: "/shop" },
     { label: "Rate a Cookie", icon: StarOutlined, path: "/review" },
     { label: "Reach Out", icon: PhoneOutlined, path: "/contact" },
+    //{ label: "Dashboard", icon: UserOutlined, path: "/dashboard" },
     { label: "About us", icon: SmileOutlined, path: "/about-us" },
     { label: "FAQ", icon: QuestionCircleOutlined, path: "/faq" },
   ];
@@ -85,7 +85,7 @@ function Navbar() {
             width: "100%",
             height: "150px",
             background: "white",
-            padding: "0 20px",
+            padding: "0 15px",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
@@ -117,15 +117,16 @@ function Navbar() {
                 <img
                   src={cookie_logo}
                   alt="logo"
-                  style={{ width: "60px", height: "60px", marginRight: "10px" }}
+                  style={{ width: "60px", height: "60px", marginRight: "14px" }}
                 />
                 <h1
                   style={{
                     color: "#e39a67",
                     margin: 0,
-                    fontSize: "1.8rem",
+                    fontSize: "1.85rem",
                     letterSpacing: "2px",
                     fontFamily: "'Pacifico', cursive",
+                    zIndex: 10,
                   }}
                 >
                   Uncle Martin's Cookies
@@ -149,12 +150,13 @@ function Navbar() {
                   fontWeight: "bold",
                   background: "white",
                   color: "black",
+                  borderRadius: "12px",
                 }}
               >
                 {navItems.map((item) => (
                   <Menu.Item
                     key={item.path}
-                    icon={<item.icon style={{ fontSize: "1.5rem" }} />}
+                    icon={<item.icon style={{ fontSize: "1.6rem" }} />}
                   >
                     <Link to={item.path}>{item.label}</Link>
                   </Menu.Item>
@@ -165,7 +167,7 @@ function Navbar() {
                   type={cartItems.length > 0 ? "primary" : ""}
                   onClick={showDrawer}
                 >
-                  <ShoppingCartOutlined style={{ fontSize: "1.5rem" }} />
+                  <ShoppingCartOutlined style={{ fontSize: "1.6rem" }} />
                 </Button>
               </Badge>
               <Drawer
@@ -216,7 +218,7 @@ function Navbar() {
         {/* Main Content */}
         <Content
           style={{
-            padding: "20px 48px",
+            padding: "0px 0px",
             minHeight: "calc(100vh - 64px - 70px)",
           }}
         >

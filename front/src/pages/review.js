@@ -48,123 +48,132 @@ function Review() {
 
   return (
     <>
-      <SearchComponentList
-        onSearchChange={(value) => setSearchValue(value)}
-        dataSource={cookies}
-        viewCookie={viewCookie}
-        rateCookie={rateCookie}
-        viewReviews={viewReviews}
-      />
-      {searchValue === "" && (
-        <Card title="🌟 Loved it? Let us know! 🌟">
-          <List
-            itemLayout="horizontal"
-            dataSource={cookies}
-            loading={cookiesLoading}
-            renderItem={(item) => (
-              <List.Item
-                style={{ flexWrap: "wrap" }}
-                actions={[
-                  <div style={{ display: "flex", gap: "15px" }}>
-                    <Button
-                      type="primary"
-                      key="view"
-                      title="View"
-                      onClick={() => viewCookie(item)}
-                    >
-                      <EyeOutlined />
-                    </Button>
-
-                    <Button
-                      type="primary"
-                      key="reviews"
-                      style={{
-                        backgroundColor: "yellow",
-                        color: "black",
-                      }}
-                      onClick={() => viewReviews(item)}
-                    >
-                      <strong>Reviews</strong>
-                    </Button>
-
-                    <Button
-                      type="primary"
-                      key="rate"
-                      style={{ backgroundColor: "green" }}
-                      onClick={() => rateCookie(item)}
-                    >
-                      Rate
-                    </Button>
-                  </div>,
-                ]}
-              >
-                <List.Item.Meta
-                  avatar={
-                    <Image
-                      src={item.img[0]}
-                      alt={item.name}
-                      width={100}
-                      height={100}
-                      style={{
-                        borderRadius: "8px",
-                        objectFit: "cover",
-                        maxWidth: "100%",
-                      }}
-                    />
-                  }
-                  title={
-                    <Text style={{ fontSize: "16px" }}>
-                      {item.name} | {item.category}
-                    </Text>
-                  }
-                  description={
-                    <div>
-                      <p
-                        style={{
-                          fontSize: "14px",
-                          color: "#666",
-                        }}
+      <div
+        style={{
+          padding: "5px 30px",
+          minHeight: "calc(100vh - 64px - 70px)",
+        }}
+      >
+        <SearchComponentList
+          onSearchChange={(value) => setSearchValue(value)}
+          dataSource={cookies}
+          viewCookie={viewCookie}
+          rateCookie={rateCookie}
+          viewReviews={viewReviews}
+        />
+        {searchValue === "" && (
+          <Card title="🌟 Loved it? Let us know! 🌟">
+            <List
+              itemLayout="horizontal"
+              dataSource={cookies}
+              loading={cookiesLoading}
+              renderItem={(item) => (
+                <List.Item
+                  style={{ flexWrap: "wrap" }}
+                  actions={[
+                    <div style={{ display: "flex", gap: "15px" }}>
+                      <Button
+                        type="primary"
+                        key="view"
+                        title="View"
+                        onClick={() => viewCookie(item)}
                       >
-                        {item.description}
-                      </p>{" "}
-                      {item.rating > 0 ? (
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <Rate
-                            allowHalf
-                            defaultValue={item.rating}
-                            style={{ flex: "0 0 auto" }}
-                            disabled
-                          />
-                          <span
-                            style={{
-                              marginLeft: "8px",
-                              fontSize: "14px",
-                              color: "#666",
-                            }}
-                          >
-                            ({item.totalReviews ? item.totalReviews : 3})
-                          </span>
-                        </div>
-                      ) : (
-                        <Tag
+                        <EyeOutlined />
+                      </Button>
+
+                      <Button
+                        type="primary"
+                        key="reviews"
+                        style={{
+                          backgroundColor: "yellow",
+                          color: "black",
+                        }}
+                        onClick={() => viewReviews(item)}
+                      >
+                        <strong>Reviews</strong>
+                      </Button>
+
+                      <Button
+                        type="primary"
+                        key="rate"
+                        style={{ backgroundColor: "green" }}
+                        onClick={() => rateCookie(item)}
+                      >
+                        Rate
+                      </Button>
+                    </div>,
+                  ]}
+                >
+                  <List.Item.Meta
+                    avatar={
+                      <Image
+                        src={item.img[0]}
+                        alt={item.name}
+                        width={100}
+                        height={100}
+                        style={{
+                          borderRadius: "8px",
+                          objectFit: "cover",
+                          maxWidth: "100%",
+                        }}
+                      />
+                    }
+                    title={
+                      <Text style={{ fontSize: "16px" }}>
+                        {item.name} | {item.category}
+                      </Text>
+                    }
+                    description={
+                      <div>
+                        <p
                           style={{
-                            display: "inline-block",
-                            backgroundColor: "#f0f0f0",
-                            color: "grey",
-                            marginBottom: "3px",
+                            fontSize: "14px",
+                            color: "#666",
                           }}
                         >
-                          Not Yet Rated
-                        </Tag>
-                      )}
-                    </div>
-                  }
-                />
-              </List.Item>
-            )}
-          />
-        </Card>
-      )}
+                          {item.description}
+                        </p>{" "}
+                        {item.rating > 0 ? (
+                          <div
+                            style={{ display: "flex", alignItems: "center" }}
+                          >
+                            <Rate
+                              allowHalf
+                              defaultValue={item.rating}
+                              style={{ flex: "0 0 auto" }}
+                              disabled
+                            />
+                            <span
+                              style={{
+                                marginLeft: "8px",
+                                fontSize: "14px",
+                                color: "#666",
+                              }}
+                            >
+                              ({item.totalReviews ? item.totalReviews : 3})
+                            </span>
+                          </div>
+                        ) : (
+                          <Tag
+                            style={{
+                              display: "inline-block",
+                              backgroundColor: "#f0f0f0",
+                              color: "grey",
+                              marginBottom: "3px",
+                            }}
+                          >
+                            Not Yet Rated
+                          </Tag>
+                        )}
+                      </div>
+                    }
+                  />
+                </List.Item>
+              )}
+            />
+          </Card>
+        )}
+      </div>
       <CookieModal
         openModal={openModal}
         setOpenModal={setOpenModal}

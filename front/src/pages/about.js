@@ -4,7 +4,13 @@ import "../assets/css/about.css"; // Importing a CSS file for custom styles
 
 function About() {
   return (
-    <div className="about-container">
+    <div
+      className="about-container"
+      style={{
+        padding: "5px 30px",
+        minHeight: "calc(100vh - 64px - 70px)",
+      }}
+    >
       <Card className="about-card" title="🍪 Our Story 🍪">
         <p className="about-text">
           Uncle Martin’s Cookies started in a small kitchen with a big dream.

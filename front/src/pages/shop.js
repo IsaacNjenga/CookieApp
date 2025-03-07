@@ -122,7 +122,12 @@ function Shop() {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        padding: "5px 30px",
+        minHeight: "calc(100vh - 64px - 70px)",
+      }}
+    >
       <Carousel autoplay className="carousel" dots={false} effect="fade">
         <div className="carousel-slide">
           Step into Uncle Martin’s Delicacies!

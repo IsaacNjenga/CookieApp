@@ -15,6 +15,7 @@ import Register from "./pages/register.js";
 import Success from "./pages/success.js";
 import Cancel from "./pages/cancel.js";
 import Review from "./pages/review.js";
+import Dashboard from "./pages/admin/dashboard.js";
 export const UserContext = createContext();
 
 //axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
@@ -80,6 +81,7 @@ function App() {
               <Route path="success" element={<Success />} />
               <Route path="cancel" element={<Cancel />} />
               <Route path="review" element={<Review />} />
+              <Route path="dashboard" element={<Dashboard />} />
             </Route>
           </Routes>
         </BrowserRouter>
