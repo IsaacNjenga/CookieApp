@@ -20,6 +20,9 @@ import CookiePage from "./pages/admin/cookies/cookiePage.js";
 import Customers from "./pages/admin/customers/customers.js";
 import Reports from "./pages/admin/reports/reports.js";
 import Payments from "./pages/admin/payments/payments.js";
+import Orders from "./pages/admin/orders/orders.js";
+import Reviews from "./pages/admin/feedbacks & reviews/reviews.js";
+import Feedback from "./pages/admin/feedbacks & reviews/feedback.js";
 export const UserContext = createContext();
 
 //axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
@@ -93,6 +96,9 @@ function App() {
               <Route path="customers" element={<Customers />} />
               <Route path="reports" element={<Reports />} />
               <Route path="payments" element={<Payments />} />
+              <Route path="orders" element={<Orders />} />
+              <Route path="feedback" element={<Feedback />} />
+              <Route path="reviews" element={<Reviews />} />
             </Route>
           </Routes>
         </BrowserRouter>

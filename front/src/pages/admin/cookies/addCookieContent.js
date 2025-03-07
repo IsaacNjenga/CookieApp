@@ -165,7 +165,7 @@ function AddCookie() {
       const res = await axios.post("add-cookie", cookieData);
       if (res.data.success) {
         Swal.fire({ icon: "success", title: "Success", text: "Cookie added!" });
-        navigate("/shop");
+        navigate("/view-cookies");
         form.resetFields();
         setValues({
           name: "",

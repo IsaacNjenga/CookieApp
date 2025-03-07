@@ -11,29 +11,21 @@ import {
   Badge,
   Drawer,
   Space,
-  message,
   Tag,
 } from "antd";
 import CookieModal from "../components/cookieModal.js";
 import SearchComponent from "../components/search.js";
 import { UserContext } from "../App.js";
 import Cart from "./cart.js";
-import UpdateCookieModal from "../components/updateCookieModal.js";
 import useCookies from "../assets/hooks/cookieHook.js";
-import Swal from "sweetalert2";
-import axios from "axios";
 import SkeletonLoader from "../components/skeletonLoader.js";
-import CookiePageContent from "./admin/cookies/cookiePageContent.js";
 
 function Shop() {
-  const { cookies, cookiesLoading, refreshKey } = useCookies();
+  const { cookies, cookiesLoading } = useCookies();
   const [openModal, setOpenModal] = useState(null);
   const [loading, setLoading] = useState(false);
   const [modalContent, setModalContent] = useState(null);
-  const [openEditModal, setOpenEditModal] = useState(null);
   const [searchValue, setSearchValue] = useState("");
-  const [openDelete, setOpenDelete] = useState(null);
-  const [confirmLoading, setConfirmLoading] = useState(false);
   const { showDrawer, openDrawer, closeDrawer, setCartItems, setCartItem } =
     useContext(UserContext);
 
@@ -79,45 +71,6 @@ function Shop() {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-  };
-
-  const editCookie = (item) => {
-    setOpenEditModal(true);
-    setLoading(true);
-    setModalContent(item);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-  };
-
-  const showDeleteConfirm = (item) => {
-    setOpenDelete(item._id);
-  };
-
-  const handleDelete = async (id) => {
-    setConfirmLoading(true);
-    try {
-      await axios.delete(`delete-cookie?id=${id}`);
-      Swal.fire({
-        icon: "success",
-        title: "Deleted",
-      });
-      refreshKey();
-    } catch (error) {
-      console.log(error);
-      Swal.fire({
-        icon: "warning",
-        title: "Cookie could not be deleted",
-        text: "Refresh and try again",
-      });
-    } finally {
-      setConfirmLoading(false);
-    }
-  };
-
-  const handleDeleteCancel = () => {
-    message.error("Canceled");
-    setOpenDelete(null);
   };
 
   return (
@@ -271,7 +224,6 @@ function Shop() {
                         <Cart />
                       </Drawer>
                     </div>
-                    
                   </Card>
                 </Col>
               ))}
@@ -299,22 +251,6 @@ function Shop() {
         modalContent={modalContent}
         loading={loading}
       />
-      <UpdateCookieModal
-        openEditModal={openEditModal}
-        setOpenEditModal={setOpenEditModal}
-        modalContent={modalContent}
-        loading={loading}
-      />
-      <CookiePageContent
-        viewCookie={viewCookie}
-        editCookie={editCookie}
-        openDelete={openDelete}
-        handleDelete={handleDelete}
-        confirmLoading={confirmLoading}
-        handleDeleteCancel={handleDeleteCancel}
-        showDeleteConfirm={showDeleteConfirm}
-      />
-      {/* Mobile Styling */}
       <style>
         {`
           .carousel-text {

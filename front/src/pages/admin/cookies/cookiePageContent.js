@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   Col,
@@ -9,23 +9,75 @@ import {
   Image,
   Badge,
   Rate,
+  message,
   Tag,
   Popconfirm,
 } from "antd";
 import SkeletonLoader from "../../../components/skeletonLoader";
 import useCookies from "../../../assets/hooks/cookieHook";
 import { DeleteOutlined, EditOutlined, EyeOutlined } from "@ant-design/icons";
+import axios from "axios";
+import Swal from "sweetalert2";
+import UpdateCookieModal from "../../../components/updateCookieModal";
+import CookieModal from "../../../components/cookieModal";
 
-function CookiePageContent({
-  viewCookie,
-  editCookie,
-  openDelete,
-  handleDelete,
-  confirmLoading,
-  handleDeleteCancel,
-  showDeleteConfirm,
-}) {
-  const { cookies, cookiesLoading,  } = useCookies();
+function CookiePageContent() {
+  const { cookies, cookiesLoading, refreshKey } = useCookies();
+  const [openModal, setOpenModal] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [modalContent, setModalContent] = useState(null);
+  const [openEditModal, setOpenEditModal] = useState(null);
+  const [openDelete, setOpenDelete] = useState(null);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+
+  const viewCookie = (item) => {
+    setOpenModal(true);
+    setLoading(true);
+    setModalContent(item);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  const editCookie = (item) => {
+    setOpenEditModal(true);
+    setLoading(true);
+    setModalContent(item);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  };
+
+  const showDeleteConfirm = (item) => {
+    setOpenDelete(item._id);
+  };
+
+  const handleDelete = async (id) => {
+    setConfirmLoading(true);
+    try {
+      await axios.delete(`delete-cookie?id=${id}`);
+      Swal.fire({
+        icon: "success",
+        title: "Deleted",
+      });
+      refreshKey();
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "warning",
+        title: "Cookie could not be deleted",
+        text: "Refresh and try again",
+      });
+    } finally {
+      setConfirmLoading(false);
+    }
+  };
+
+  const handleDeleteCancel = () => {
+    message.error("Canceled");
+    setOpenDelete(null);
+  };
+
   return (
     <>
       <div>
@@ -152,7 +204,7 @@ function CookiePageContent({
                         style={{ background: "red" }}
                         danger
                         title="Delete this cookie"
-                        onClick={() => showDeleteConfirm(item)}
+                        onClick={() => showDeleteConfirm(item._id)}
                       >
                         <DeleteOutlined />
                       </Button>
@@ -164,6 +216,18 @@ function CookiePageContent({
           </Row>
         )}
       </div>
+      <CookieModal
+        openModal={openModal}
+        setOpenModal={setOpenModal}
+        modalContent={modalContent}
+        loading={loading}
+      />
+      <UpdateCookieModal
+        openEditModal={openEditModal}
+        setOpenEditModal={setOpenEditModal}
+        modalContent={modalContent}
+        loading={loading}
+      />
     </>
   );
 }

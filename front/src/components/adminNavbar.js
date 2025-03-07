@@ -31,12 +31,8 @@ const items = [
     icon: <TruckOutlined />,
     children: [
       {
-        key: "/orders/track",
-        label: <Link to="/orders/track">Track Orders</Link>,
-      },
-      {
-        key: "/orders/new",
-        label: <Link to="/orders/new">New Orders</Link>,
+        key: "orders",
+        label: <Link to="/orders">New Orders</Link>,
       },
     ],
   },
