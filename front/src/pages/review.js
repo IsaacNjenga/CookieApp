@@ -50,7 +50,7 @@ function Review() {
     <>
       <div
         style={{
-          padding: "5px 30px",
+          padding: "10px 8px",
           minHeight: "calc(100vh - 64px - 70px)",
         }}
       >
