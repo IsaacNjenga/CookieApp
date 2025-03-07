@@ -27,7 +27,9 @@ function Dashboard() {
             background: colorBgContainer,
             fontSize: "22px",
             textAlign: "center",
-            fontWeight: "bold",
+            fontWeight: "bold", position: "sticky",
+            top: 0,
+            zIndex: 10,
           }}
         >
           Dashboard

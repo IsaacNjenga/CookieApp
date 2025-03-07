@@ -125,9 +125,9 @@ function AdminNavbar({ collapsed, setCollapsed }) {
           width={260}
           style={{
             height: "100vh",
-            position: "fixed",
+            position: "absolute",
             left: 0,
-            top: 0,
+            top: 150,
             bottom: 0,
             overflowY: "auto",
             scrollbarWidth: "thin",
