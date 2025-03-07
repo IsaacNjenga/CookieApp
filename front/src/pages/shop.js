@@ -11,7 +11,6 @@ import {
   Badge,
   Drawer,
   Space,
-  Popconfirm,
   message,
   Tag,
 } from "antd";
@@ -21,10 +20,10 @@ import { UserContext } from "../App.js";
 import Cart from "./cart.js";
 import UpdateCookieModal from "../components/updateCookieModal.js";
 import useCookies from "../assets/hooks/cookieHook.js";
-import { DeleteOutlined } from "@ant-design/icons";
 import Swal from "sweetalert2";
 import axios from "axios";
 import SkeletonLoader from "../components/skeletonLoader.js";
+import CookiePageContent from "./admin/cookies/cookiePageContent.js";
 
 function Shop() {
   const { cookies, cookiesLoading, refreshKey } = useCookies();
@@ -147,7 +146,6 @@ function Shop() {
       />{" "}
       {searchValue === "" && (
         <div>
-          {" "}
           <Divider
             variant="solid"
             className="home-divider"
@@ -273,39 +271,7 @@ function Shop() {
                         <Cart />
                       </Drawer>
                     </div>
-                    <div
-                      style={{
-                        display: "flex",
-                        gap: "10px",
-                        margin: "10px 0px",
-                      }}
-                    >
-                      <Button
-                        type="primary"
-                        onClick={() => editCookie(item)}
-                        style={{ background: "#da8a4d" }}
-                      >
-                        Edit
-                      </Button>
-                      <Popconfirm
-                        title="Are you sure?"
-                        description="This action cannot be undone!"
-                        open={openDelete}
-                        onConfirm={() => handleDelete(item._id)}
-                        okButtonProps={{ loading: confirmLoading }}
-                        onCancel={handleDeleteCancel}
-                      >
-                        <Button
-                          type="primary"
-                          style={{ background: "red" }}
-                          danger
-                          title="Delete this cookie"
-                          onClick={() => showDeleteConfirm(item)}
-                        >
-                          <DeleteOutlined />
-                        </Button>
-                      </Popconfirm>
-                    </div>
+                    
                   </Card>
                 </Col>
               ))}
@@ -338,6 +304,15 @@ function Shop() {
         setOpenEditModal={setOpenEditModal}
         modalContent={modalContent}
         loading={loading}
+      />
+      <CookiePageContent
+        viewCookie={viewCookie}
+        editCookie={editCookie}
+        openDelete={openDelete}
+        handleDelete={handleDelete}
+        confirmLoading={confirmLoading}
+        handleDeleteCancel={handleDeleteCancel}
+        showDeleteConfirm={showDeleteConfirm}
       />
       {/* Mobile Styling */}
       <style>

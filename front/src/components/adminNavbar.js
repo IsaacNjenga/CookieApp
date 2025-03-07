@@ -2,6 +2,7 @@ import {
   BarChartOutlined,
   CreditCardOutlined,
   DashboardOutlined,
+  EyeOutlined,
   LikeOutlined,
   PlusCircleOutlined,
   ProductOutlined,
@@ -11,8 +12,9 @@ import {
   UserSwitchOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Outlet, useLocation } from "react-router-dom";
+import { UserContext } from "../App";
 
 const { Content, Sider } = Layout;
 
@@ -48,8 +50,13 @@ const items = [
     icon: <ProductOutlined />,
     children: [
       {
-        key: "/products/add",
-        label: <Link to="/products/add">Add Cookie</Link>,
+        key: "/view",
+        label: <Link to="/view-cookies">View Cookies</Link>,
+        icon: <EyeOutlined />,
+      },
+      {
+        key: "/add",
+        label: <Link to="/add-cookie">Add Cookie</Link>,
         icon: <PlusCircleOutlined />,
       },
     ],
@@ -107,9 +114,10 @@ const items = [
   },
 ];
 
-function AdminNavbar({ collapsed, setCollapsed }) {
+function AdminNavbar() {
   const location = useLocation();
   const [current, setCurrent] = useState(location.pathname);
+  const { collapsed, setCollapsed } = useContext(UserContext);
 
   const handleClick = (e) => {
     setCurrent(e.key);
@@ -124,13 +132,14 @@ function AdminNavbar({ collapsed, setCollapsed }) {
           onCollapse={setCollapsed}
           width={260}
           style={{
-            height: "100vh",
+            height: "120vh",
             position: "absolute",
             left: 0,
             top: 150,
             bottom: 0,
             overflowY: "auto",
             scrollbarWidth: "thin",
+            zIndex: 100,
           }}
         >
           <div

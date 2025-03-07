@@ -9,13 +9,15 @@ import Occasions from "./pages/occasions.js";
 import Navbar from "./components/navbar.js";
 import Checkout from "./pages/checkout.js";
 import axios from "axios";
-import AddCookie from "./components/addCookie.js";
+import AddCookie from "./pages/admin/cookies/addCookieContent.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
 import Success from "./pages/success.js";
 import Cancel from "./pages/cancel.js";
 import Review from "./pages/review.js";
-import Dashboard from "./pages/admin/dashboard.js";
+import Dashboard from "./pages/admin/dashboard/dashboard.js";
+import AddCookiePage from "./pages/admin/cookies/addCookiePage.js";
+import CookiePage from "./pages/admin/cookies/cookiePage.js";
 export const UserContext = createContext();
 
 //axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
@@ -25,6 +27,7 @@ function App() {
   const [cartItems, setCartItems] = useState([]);
   const [openDrawer, setOpenDrawer] = useState(false);
   const [cartItem, setCartItem] = useState([]);
+  const [collapsed, setCollapsed] = useState(false);
   const [user, setUser] = useState();
 
   const showDrawer = () => setOpenDrawer(true);
@@ -62,6 +65,8 @@ function App() {
           setCartItem,
           user,
           setUser,
+          collapsed,
+          setCollapsed,
         }}
       >
         <BrowserRouter>
@@ -75,13 +80,14 @@ function App() {
               <Route path="contact" element={<Contact />} />
               <Route path="about-us" element={<About />} />
               <Route path="/checkout" element={<Checkout />} />
-              <Route path="/add-cookie" element={<AddCookie />} />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
               <Route path="success" element={<Success />} />
               <Route path="cancel" element={<Cancel />} />
               <Route path="review" element={<Review />} />
               <Route path="dashboard" element={<Dashboard />} />
+              <Route path="add-cookie" element={<AddCookiePage />} />
+              <Route path="view-cookies" element={<CookiePage />} />
             </Route>
           </Routes>
         </BrowserRouter>

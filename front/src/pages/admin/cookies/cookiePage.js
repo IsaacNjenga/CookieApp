@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import AdminNavbar from "./adminNavbar";
+import React, { useContext } from "react";
+import AdminNavbar from "../../../components/adminNavbar";
 import { Layout, theme } from "antd";
+import { UserContext } from "../../../App";
+import CookiePageContent from "./cookiePageContent";
 
 const { Content, Header } = Layout;
 
-function Dashboard() {
-  const [collapsed, setCollapsed] = useState(false); // Sidebar state
+function CookiePage() {
+  const { collapsed } = useContext(UserContext);
 
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -13,7 +15,7 @@ function Dashboard() {
 
   return (
     <Layout style={{ minHeight: "100vh", transition: "margin-left 0.3s ease" }}>
-      <AdminNavbar collapsed={collapsed} setCollapsed={setCollapsed} />
+      <AdminNavbar />
 
       <Layout
         style={{
@@ -27,12 +29,12 @@ function Dashboard() {
             background: colorBgContainer,
             fontSize: "22px",
             textAlign: "center",
-            fontWeight: "bold", position: "sticky",
+            fontWeight: "bold",
+            position: "sticky",
             top: 0,
-            zIndex: 10,
           }}
         >
-          Dashboard
+          All Cookies
         </Header>
         <Content
           style={{ margin: "10px 0px", padding: "10px", overflow: "auto" }}
@@ -46,7 +48,7 @@ function Dashboard() {
               fontSize: "18px",
             }}
           >
-            Dashboard will be here
+            <CookiePageContent />
           </div>
         </Content>
       </Layout>
@@ -54,4 +56,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default CookiePage;
