@@ -9,7 +9,6 @@ import Occasions from "./pages/occasions.js";
 import Navbar from "./components/navbar.js";
 import Checkout from "./pages/checkout.js";
 import axios from "axios";
-import AddCookie from "./pages/admin/cookies/addCookieContent.js";
 import Login from "./pages/login.js";
 import Register from "./pages/register.js";
 import Success from "./pages/success.js";
@@ -18,6 +17,9 @@ import Review from "./pages/review.js";
 import Dashboard from "./pages/admin/dashboard/dashboard.js";
 import AddCookiePage from "./pages/admin/cookies/addCookiePage.js";
 import CookiePage from "./pages/admin/cookies/cookiePage.js";
+import Customers from "./pages/admin/customers/customers.js";
+import Reports from "./pages/admin/reports/reports.js";
+import Payments from "./pages/admin/payments/payments.js";
 export const UserContext = createContext();
 
 //axios.defaults.baseURL = "http://localhost:3001/UncleCookies";
@@ -88,6 +90,9 @@ function App() {
               <Route path="dashboard" element={<Dashboard />} />
               <Route path="add-cookie" element={<AddCookiePage />} />
               <Route path="view-cookies" element={<CookiePage />} />
+              <Route path="customers" element={<Customers />} />
+              <Route path="reports" element={<Reports />} />
+              <Route path="payments" element={<Payments />} />
             </Route>
           </Routes>
         </BrowserRouter>

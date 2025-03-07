@@ -9,6 +9,7 @@ import {
   SolutionOutlined,
   TeamOutlined,
   TruckOutlined,
+  UserOutlined,
   UserSwitchOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
@@ -151,7 +152,13 @@ function AdminNavbar() {
               textAlign: "center",
             }}
           >
-            {collapsed ? "JD" : "John Doe"}
+            {collapsed ? (
+              "JD"
+            ) : (
+              <span>
+                <UserOutlined /> John Doe
+              </span>
+            )}
           </div>
           <Menu
             mode="inline"

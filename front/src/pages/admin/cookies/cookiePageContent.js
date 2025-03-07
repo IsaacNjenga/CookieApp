@@ -25,7 +25,7 @@ function CookiePageContent({
   handleDeleteCancel,
   showDeleteConfirm,
 }) {
-  const { cookies, cookiesLoading, refreshKey } = useCookies();
+  const { cookies, cookiesLoading,  } = useCookies();
   return (
     <>
       <div>

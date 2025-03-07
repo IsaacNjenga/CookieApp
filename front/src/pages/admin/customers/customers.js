@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import AdminNavbar from "../../../components/adminNavbar";
 import { Layout, theme } from "antd";
 import { UserContext } from "../../../App";
-import DashboardContent from "./dashboardContent";
+import CustomersContent from "./customersContent.js";
 
 const { Content, Header } = Layout;
 
-function Dashboard() {
+function Customers() {
   const { collapsed } = useContext(UserContext);
 
   const {
@@ -33,7 +33,7 @@ function Dashboard() {
             top: 0,
           }}
         >
-          Dashboard
+          Customers
         </Header>
         <Content
           style={{ margin: "10px 0px", padding: "10px", overflow: "auto" }}
@@ -47,7 +47,7 @@ function Dashboard() {
               fontSize: "18px",
             }}
           >
-            <DashboardContent />
+            <CustomersContent />
           </div>
         </Content>
       </Layout>
@@ -55,4 +55,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default Customers;

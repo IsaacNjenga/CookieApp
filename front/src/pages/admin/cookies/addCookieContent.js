@@ -416,6 +416,7 @@ function AddCookie() {
                 type="primary"
                 style={{ background: "purple" }}
                 loading={loading}
+                disabled={imageUploading ? true : false}
               >
                 Submit
               </Button>
